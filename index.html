@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VIP TV Qəbələ - Rəsmi Sayt</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="https://img.icons8.com/color/96/000000/youtube-play.png" type="image/x-icon">
+    
+    <meta property="og:title" content="VIP TV Qəbələ - Rəsmi Sayt">
+    <meta property="og:description" content="Pozitiv enerji, keyfiyyətli məzmun. YouTube kanalımız və video arxivi.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=1200&h=630&fit=crop">
+    <meta property="og:url" content="https://vip-tv-qebele.vercel.app/">
+    
     <style>
         :root {
             --bg-dark: #020617;
@@ -243,6 +250,31 @@
             50% { opacity: 0.6; }
         }
         
+        /* Admin Panel Button */
+        .admin-panel-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: 0 5px 20px rgba(239, 68, 68, 0.3);
+            transition: all 0.3s;
+        }
+        
+        .admin-panel-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4);
+        }
+        
         /* Hero Buttons */
         .hero-buttons {
             display: flex;
@@ -289,44 +321,6 @@
             background: rgba(255, 0, 0, 0.2);
             transform: translateY(-3px);
             border-color: rgba(255, 0, 0, 0.3);
-        }
-        
-        /* Buttons */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 24px;
-            border-radius: 50px;
-            font-weight: bold;
-            text-decoration: none;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            font-size: 15px;
-        }
-        
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3);
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(239, 68, 68, 0.4);
-        }
-        
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-3px);
         }
         
         /* Video Arxiv */
@@ -429,25 +423,6 @@
             align-items: center;
         }
         
-        .load-more-btn {
-            display: block;
-            margin: 50px auto 0;
-            padding: 15px 40px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 16px;
-        }
-        
-        .load-more-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(239, 68, 68, 0.3);
-        }
-        
         /* Haqqımızda */
         .about-section {
             padding: 80px 0;
@@ -536,11 +511,132 @@
             font-family: 'Arial Black', sans-serif;
         }
         
+        /* Share Section */
+        .share-section {
+            padding: 60px 0;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(239,68,68,0.1), rgba(15,23,42,0.9));
+        }
+        
+        .share-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 16px;
+            min-width: 180px;
+            justify-content: center;
+        }
+        
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+        }
+        
+        .whatsapp-btn:hover {
+            background: #1da851;
+            transform: translateY(-3px);
+        }
+        
+        .telegram-btn {
+            background: #0088cc;
+            color: white;
+        }
+        
+        .telegram-btn:hover {
+            background: #0077b5;
+            transform: translateY(-3px);
+        }
+        
+        .copy-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .copy-btn:hover {
+            background: #dc2626;
+            transform: translateY(-3px);
+        }
+        
+        .site-url {
+            background: rgba(255,255,255,0.1);
+            padding: 15px 25px;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 600px;
+            word-break: break-all;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        /* Admin Modal */
+        .admin-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .admin-modal.active {
+            display: flex;
+        }
+        
+        .admin-modal-content {
+            background: var(--bg-surface);
+            padding: 30px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .admin-input {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 10px 0;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+            color: white;
+            font-size: 16px;
+        }
+        
+        .admin-btn {
+            padding: 12px 25px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 5px;
+        }
+        
         /* Footer */
         .footer {
             background: var(--bg-surface);
             padding: 60px 0 30px;
-            margin-top: 80px;
+            margin-top: 0;
         }
         
         .footer-content {
@@ -663,36 +759,13 @@
             z-index: 10001;
         }
         
-        /* Loading */
-        .loading {
-            text-align: center;
-            padding: 40px;
-            color: var(--text-muted);
-            grid-column: 1 / -1;
-        }
-        
-        .loading-spinner {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            border: 3px solid rgba(255,255,255,0.1);
-            border-radius: 50%;
-            border-top-color: var(--primary);
-            animation: spin 1s linear infinite;
-            margin-bottom: 20px;
-        }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
         /* Responsive */
         @media (max-width: 1024px) {
             .hero h2 {
                 font-size: 2.8rem;
             }
             
-            .hero-btn {
+            .hero-btn, .share-btn {
                 min-width: 180px;
                 padding: 14px 28px;
             }
@@ -740,13 +813,13 @@
                 max-width: 300px;
             }
             
-            .hero-buttons {
+            .hero-buttons, .share-buttons {
                 flex-direction: column;
                 align-items: center;
                 gap: 15px;
             }
             
-            .hero-btn {
+            .hero-btn, .share-btn {
                 width: 100%;
                 max-width: 300px;
             }
@@ -782,6 +855,16 @@
                 width: 250px;
                 padding: 70px 20px 25px;
             }
+            
+            .share-btn {
+                padding: 12px 25px;
+                font-size: 14px;
+            }
+            
+            .site-url {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
         }
     </style>
 </head>
@@ -813,6 +896,9 @@
                     </a>
                     <a href="#youtube-stats" class="btn-secondary">
                         <i class="fab fa-youtube"></i> Statistikalar
+                    </a>
+                    <a href="#share" class="btn-secondary">
+                        <i class="fas fa-share-alt"></i> Paylaş
                     </a>
                 </nav>
                 
@@ -854,6 +940,9 @@
             <a href="#youtube-stats" onclick="toggleMobileMenu()">
                 <i class="fab fa-youtube"></i> Statistikalar
             </a>
+            <a href="#share" onclick="toggleMobileMenu()">
+                <i class="fas fa-share-alt"></i> Paylaş
+            </a>
             <a href="#elaqe" onclick="toggleMobileMenu()">
                 <i class="fas fa-phone"></i> Əlaqə
             </a>
@@ -877,6 +966,11 @@
                 <i class="fas fa-envelope"></i> vippremiumoffical@gmail.com
             </p>
         </div>
+    </div>
+
+    <!-- Admin Panel Button -->
+    <div class="admin-panel-btn" onclick="openAdminPanel()">
+        <i class="fas fa-plus"></i>
     </div>
 
     <!-- Hero Section -->
@@ -915,16 +1009,21 @@
             </p>
             
             <div class="videos-grid" id="videosGrid">
-                <!-- Videolar buraya yüklənəcək -->
+                <!-- Videolar buraya JavaScript ilə yüklənəcək -->
                 <div class="loading">
                     <div class="loading-spinner"></div>
                     <p>Videolar yüklənir...</p>
                 </div>
             </div>
             
-            <button class="load-more-btn" onclick="loadMoreVideos()" id="loadMoreBtn" style="display: none;">
-                <i class="fas fa-plus"></i> Daha Çox Video Yüklə
-            </button>
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="https://www.youtube.com/@viptvazerbaijan/videos" 
+                   target="_blank" 
+                   class="btn btn-primary" 
+                   style="padding: 15px 40px; font-size: 1.1rem;">
+                    <i class="fab fa-youtube"></i> YouTube Kanalımızdakı Bütün Videolar
+                </a>
+            </div>
         </div>
     </section>
 
@@ -977,22 +1076,22 @@
             
             <div class="live-stats">
                 <div class="stat-box">
-                    <div class="stat-number" id="subsCount">0</div>
+                    <div class="stat-number">2.5K+</div>
                     <p>Abunəçi</p>
                 </div>
                 
                 <div class="stat-box">
-                    <div class="stat-number" id="viewsCount">0</div>
+                    <div class="stat-number">150K+</div>
                     <p>Ümumi Baxış</p>
                 </div>
                 
                 <div class="stat-box">
-                    <div class="stat-number" id="videosCount">0</div>
+                    <div class="stat-number">85+</div>
                     <p>Video Sayı</p>
                 </div>
                 
                 <div class="stat-box">
-                    <div class="stat-number" id="lastMonthViews">0</div>
+                    <div class="stat-number">5K+</div>
                     <p>Son 30 gün</p>
                 </div>
             </div>
@@ -1008,456 +1107,8 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer" id="elaqe">
+    <!-- Share Section -->
+    <section id="share" class="share-section">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>VIP TV Qəbələ</h3>
-                    <p>Peşəkar komanda, pozitiv enerji, keyfiyyətli məzmun. Hər gün yeni videolar!</p>
-                    
-                    <div class="social-links">
-                        <a href="https://youtube.com/@viptvazerbaijan" class="social-link" target="_blank">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="https://instagram.com/viptvpremium" class="social-link" target="_blank">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://tiktok.com/@viptvoffical" class="social-link" target="_blank">
-                            <i class="fab fa-tiktok"></i>
-                        </a>
-                        <a href="https://facebook.com" class="social-link" target="_blank">
-                            <i class="fab fa-facebook"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Əlaqə</h3>
-                    <p><i class="fas fa-phone" style="margin-right: 10px;"></i> +994 50 454 5153</p>
-                    <p><i class="fas fa-envelope" style="margin-right: 10px;"></i> vippremiumoffical@gmail.com</p>
-                    <p><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> Qəbələ, Azərbaycan</p>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Sürətli Keçidlər</h3>
-                    <div class="quick-links">
-                        <a href="#top">
-                            <i class="fas fa-chevron-right"></i> Ana Səhifə
-                        </a>
-                        <a href="#video-arxiv">
-                            <i class="fas fa-chevron-right"></i> Video Arxiv
-                        </a>
-                        <a href="#haqqimizda">
-                            <i class="fas fa-chevron-right"></i> Haqqımızda
-                        </a>
-                        <a href="#youtube-stats">
-                            <i class="fas fa-chevron-right"></i> Statistikalar
-                        </a>
-                        <a href="https://www.youtube.com/@viptvazerbaijan/videos" target="_blank">
-                            <i class="fas fa-chevron-right"></i> YouTube Videolar
-                        </a>
-                    </div>
-                </div>
-            </div>
+            <h2 style
             
-            <div class="copyright">
-                © 2024 VIP TV Qəbələ. Bütün hüquqlar qorunur. | Pozitiv enerji, keyfiyyətli məzmun
-            </div>
-        </div>
-    </footer>
-
-    <!-- Video Modal -->
-    <div class="video-modal" id="videoModal">
-        <div class="video-modal-content">
-            <button class="close-modal" onclick="closeVideoModal()">
-                <i class="fas fa-times"></i>
-            </button>
-            <div id="videoContainer" style="padding-top: 56.25%; position: relative;">
-                <iframe id="ytPlayer" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: 10px;" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                </iframe>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // YouTube API Configuration - REAL KANAL
-        const YOUTUBE_API_KEY = 'AIzaSyAvY243WVposrcAcAA6aK6BBQM99NjX_Rs';
-        const YOUTUBE_CHANNEL_ID = 'UCMZR20JUlZ3xnswBcw3oTFA'; // vip tv azerbaijan kanal ID
-        const YOUTUBE_CHANNEL_URL = 'https://www.youtube.com/@viptvazerbaijan';
-        
-        // State tracking
-        let nextPageToken = '';
-        let isLoading = false;
-        let loadedVideos = 0;
-        const VIDEOS_PER_PAGE = 12;
-        let mobileMenuOpen = false;
-        
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('VIP TV Qəbələ - Real kanal məlumatları ilə başladı');
-            
-            // YouTube statistikalarını yüklə
-            fetchYouTubeStats();
-            
-            // Videoları yüklə
-            fetchVideos();
-            
-            // Smooth scrolling
-            initSmoothScrolling();
-            
-            // Check for live stream
-            checkLiveStream();
-        });
-        
-        // Mobile menu aç/bağla
-        function toggleMobileMenu() {
-            const mobileMenu = document.getElementById('mobileMenu');
-            const overlay = document.querySelector('.mobile-menu-overlay');
-            
-            mobileMenuOpen = !mobileMenuOpen;
-            
-            if(mobileMenuOpen) {
-                mobileMenu.classList.add('active');
-                overlay.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            } else {
-                mobileMenu.classList.remove('active');
-                overlay.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        }
-        
-        // Scroll to top
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-        
-        // Canlı yayım yoxla
-        async function checkLiveStream() {
-            try {
-                const response = await fetch(
-                    `https://www.googleapis.com/youtube/v3/search?key=${YOUTUBE_API_KEY}&channelId=${YOUTUBE_CHANNEL_ID}&part=snippet&eventType=live&type=video`
-                );
-                
-                if(response.ok) {
-                    const data = await response.json();
-                    if(data.items && data.items.length > 0) {
-                        // Canlı yayım var
-                        updateLiveBadge(true);
-                    } else {
-                        // Canlı yayım yoxdur
-                        updateLiveBadge(false);
-                    }
-                }
-            } catch (error) {
-                console.log('Canlı yayım yoxlanılarkən xəta:', error);
-            }
-        }
-        
-        // Live badge yenilə
-        function updateLiveBadge(isLive) {
-            const liveBadge = document.querySelector('.live-badge');
-            const liveButton = document.querySelector('.hero-btn.live');
-            
-            if(isLive) {
-                liveBadge.innerHTML = '<i class="fas fa-circle"></i> CANLI YAYIM';
-                liveBadge.style.background = 'var(--primary)';
-                liveButton.innerHTML = '<i class="fas fa-play"></i> CANLI YAYIMA BAX';
-                liveButton.href = 'https://www.youtube.com/@viptvazerbaijan/live';
-            } else {
-                liveBadge.innerHTML = '<i class="fas fa-bolt"></i> POZİTİV ENERJİ';
-                liveBadge.style.background = 'linear-gradient(135deg, #F59E0B, #D97706)';
-                liveButton.innerHTML = '<i class="fas fa-play-circle"></i> SON VİDEOLARI BAX';
-                liveButton.href = 'https://www.youtube.com/@viptvazerbaijan/videos';
-            }
-        }
-        
-        // YouTube statistikalarını yüklə
-        async function fetchYouTubeStats() {
-            try {
-                // Channel statistics
-                const statsUrl = `https://www.googleapis.com/youtube/v3/channels?part=statistics,snippet&id=${YOUTUBE_CHANNEL_ID}&key=${YOUTUBE_API_KEY}`;
-                const response = await fetch(statsUrl);
-                
-                if(response.ok) {
-                    const data = await response.json();
-                    
-                    if(data.items && data.items[0]) {
-                        const stats = data.items[0].statistics;
-                        
-                        // Update statistics
-                        document.getElementById('subsCount').textContent = 
-                            formatNumber(stats.subscriberCount);
-                        document.getElementById('viewsCount').textContent = 
-                            formatNumber(stats.viewCount);
-                        document.getElementById('videosCount').textContent = 
-                            formatNumber(stats.videoCount);
-                        
-                        // Estimate last month views (approximate)
-                        const lastMonthViews = Math.floor(parseInt(stats.viewCount) / 30);
-                        document.getElementById('lastMonthViews').textContent = 
-                            formatNumber(lastMonthViews);
-                        
-                        console.log('YouTube stats loaded:', stats);
-                    }
-                }
-            } catch (error) {
-                console.error('YouTube stats error:', error);
-                // Show sample data if API fails
-                showSampleStats();
-            }
-        }
-        
-        // Videoları yüklə
-        async function fetchVideos() {
-            if(isLoading) return;
-            
-            isLoading = true;
-            const videosGrid = document.getElementById('videosGrid');
-            
-            try {
-                // Show loading
-                if(loadedVideos === 0) {
-                    videosGrid.innerHTML = `
-                        <div class="loading">
-                            <div class="loading-spinner"></div>
-                            <p>Videolar yüklənir...</p>
-                        </div>
-                    `;
-                }
-                
-                // Build API URL
-                let apiUrl = `https://www.googleapis.com/youtube/v3/search?key=${YOUTUBE_API_KEY}&channelId=${YOUTUBE_CHANNEL_ID}&part=snippet&type=video&order=date&maxResults=${VIDEOS_PER_PAGE}`;
-                
-                if(nextPageToken) {
-                    apiUrl += `&pageToken=${nextPageToken}`;
-                }
-                
-                const response = await fetch(apiUrl);
-                
-                if(response.ok) {
-                    const data = await response.json();
-                    
-                    // Update next page token
-                    nextPageToken = data.nextPageToken || '';
-                    
-                    // Clear loading
-                    if(loadedVideos === 0) {
-                        videosGrid.innerHTML = '';
-                    }
-                    
-                    // Add videos to grid
-                    if(data.items && data.items.length > 0) {
-                        data.items.forEach(video => {
-                            if(video.id.videoId) {
-                                addVideoToGrid(video);
-                                loadedVideos++;
-                            }
-                        });
-                        
-                        // Show/hide load more button
-                        const loadMoreBtn = document.getElementById('loadMoreBtn');
-                        if(nextPageToken && data.items.length === VIDEOS_PER_PAGE) {
-                            loadMoreBtn.style.display = 'block';
-                        } else {
-                            loadMoreBtn.style.display = 'none';
-                        }
-                    } else {
-                        videosGrid.innerHTML = `
-                            <div style="text-align: center; grid-column: 1 / -1; padding: 40px; color: var(--text-muted);">
-                                <i class="fas fa-video-slash" style="font-size: 48px; margin-bottom: 20px;"></i>
-                                <h3>Video tapılmadı</h3>
-                                <p>YouTube kanalından videolar yüklənərkən xəta baş verdi.</p>
-                            </div>
-                        `;
-                    }
-                }
-            } catch (error) {
-                console.error('Videos fetch error:', error);
-                
-                // Show error or sample videos
-                if(loadedVideos === 0) {
-                    showSampleVideos();
-                }
-            } finally {
-                isLoading = false;
-            }
-        }
-        
-        // Add video to grid
-        function addVideoToGrid(video) {
-            const videosGrid = document.getElementById('videosGrid');
-            
-            const videoId = video.id.videoId;
-            const snippet = video.snippet;
-            
-            const thumbnail = snippet.thumbnails.medium?.url || snippet.thumbnails.default?.url;
-            const title = snippet.title;
-            const publishedAt = new Date(snippet.publishedAt);
-            const formattedDate = publishedAt.toLocaleDateString('az-AZ', {
-                day: '2-digit',
-                month: '2-digit',
-                year: 'numeric'
-            });
-            
-            const videoCard = document.createElement('div');
-            videoCard.className = 'video-card';
-            videoCard.innerHTML = `
-                <div class="video-thumbnail" 
-                     style="background-image: url('${thumbnail}');"
-                     onclick="playVideo('${videoId}')">
-                    <div class="video-play-btn">
-                        <i class="fas fa-play"></i>
-                    </div>
-                </div>
-                <div class="video-info">
-                    <h3 class="video-title" title="${title}">${title}</h3>
-                    <div class="video-meta">
-                        <span><i class="far fa-calendar"></i> ${formattedDate}</span>
-                        <span><i class="fas fa-play-circle"></i> İzlə</span>
-                    </div>
-                </div>
-            `;
-            
-            videosGrid.appendChild(videoCard);
-        }
-        
-        // Daha çox video yüklə
-        function loadMoreVideos() {
-            const loadMoreBtn = document.getElementById('loadMoreBtn');
-            loadMoreBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Yüklənir...';
-            loadMoreBtn.disabled = true;
-            
-            fetchVideos().then(() => {
-                loadMoreBtn.innerHTML = '<i class="fas fa-plus"></i> Daha Çox Video Yüklə';
-                loadMoreBtn.disabled = false;
-            });
-        }
-        
-        // Video oynat
-        function playVideo(videoId) {
-            const modal = document.getElementById('videoModal');
-            const player = document.getElementById('ytPlayer');
-            
-            player.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            
-            // Mobile menu bağla
-            if(mobileMenuOpen) {
-                toggleMobileMenu();
-            }
-        }
-        
-        // Video qapat
-        function closeVideoModal() {
-            const modal = document.getElementById('videoModal');
-            const player = document.getElementById('ytPlayer');
-            
-            player.src = '';
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-        
-        // Sample videos göstər (API xətası olarsa)
-        function showSampleVideos() {
-            const videosGrid = document.getElementById('videosGrid');
-            
-            const sampleVideos = [
-                {
-                    id: { videoId: 'dQw4w9WgXcQ' },
-                    snippet: {
-                        title: 'Pozitiv Enerji - Günə Yaxşı Başlayın',
-                        description: 'Hər günü pozitiv başlamaq üçün motivasiya',
-                        thumbnails: {
-                            medium: { url: 'https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg' }
-                        },
-                        publishedAt: '2024-01-15T10:30:00Z'
-                    }
-                },
-                {
-                    id: { videoId: '9bZkp7q19f0' },
-                    snippet: {
-                        title: 'Qəbələ Gözəllikləri - Təbiət Səfəri',
-                        description: 'Qəbələnin təbiət gözəllikləri',
-                        thumbnails: {
-                            medium: { url: 'https://img.youtube.com/vi/9bZkp7q19f0/mqdefault.jpg' }
-                        },
-                        publishedAt: '2024-01-14T14:20:00Z'
-                    }
-                }
-            ];
-            
-            videosGrid.innerHTML = '';
-            sampleVideos.forEach(video => {
-                addVideoToGrid(video);
-            });
-            
-            document.getElementById('loadMoreBtn').style.display = 'none';
-        }
-        
-        // Sample stats göstər
-        function showSampleStats() {
-            document.getElementById('subsCount').textContent = '2.5K';
-            document.getElementById('viewsCount').textContent = '150K';
-            document.getElementById('videosCount').textContent = '85';
-            document.getElementById('lastMonthViews').textContent = '5K';
-        }
-        
-        // Format number
-        function formatNumber(num) {
-            const number = parseInt(num);
-            if(number >= 1000000) {
-                return (number / 1000000).toFixed(1) + 'M';
-            } else if(number >= 1000) {
-                return (number / 1000).toFixed(1) + 'K';
-            }
-            return number.toLocaleString();
-        }
-        
-        // Smooth scrolling
-        function initSmoothScrolling() {
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    const targetId = this.getAttribute('href');
-                    if(targetId === '#') return;
-                    
-                    e.preventDefault();
-                    const targetElement = document.querySelector(targetId);
-                    if(targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                        
-                        // Mobile menu bağla
-                        if(mobileMenuOpen) {
-                            toggleMobileMenu();
-                        }
-                    }
-                });
-            });
-        }
-        
-        // Escape ilə video bağla
-        document.addEventListener('keydown', function(e) {
-            if(e.key === 'Escape') {
-                closeVideoModal();
-            }
-        });
-        
-        // Modal kliklə bağla
-        document.getElementById('videoModal').addEventListener('click', function(e) {
-            if(e.target === this) {
-                closeVideoModal();
-            }
-        });
-    </script>
-</body>
-</html>
