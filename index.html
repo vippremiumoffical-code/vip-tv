@@ -4,13 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VIP TV Qəbələ - Test 1</title>
-    <!-- Font Awesome HTTPS linki -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
-          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
-          crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* BÜTÜN CSS KODUNU BURDA SAXLA (eyni qalır) */
         :root {
             --bg-dark: #020617;
             --bg-surface: #0F172A;
@@ -26,53 +21,582 @@
             box-sizing: border-box;
         }
         
-        /* ... bütün digər CSS kodları ... */
+        body {
+            background: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
         
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: rgba(2, 6, 23, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            background: var(--primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        .logo-text h1 {
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+        }
+        
+        .logo-text p {
+            color: var(--secondary);
+            font-size: 14px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(2, 6, 23, 0.8), rgba(2, 6, 23, 0.9)), 
+                        url('https://images.unsplash.com/photo-1621856291403-44d6647bf12c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            margin-top: 90px;
+            border-radius: 0 0 30px 30px;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+        
+        .hero h2 {
+            font-size: 64px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Live Badge */
+        .live-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 14px;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 10px 30px rgba(239, 68, 68, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(239, 68, 68, 0.4);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Yeni Əlavələr - Proqramlar Bölməsi */
+        .programs-section {
+            padding: 100px 0;
+            background: var(--bg-surface);
+            border-radius: 30px;
+            margin: 50px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 60px;
+            color: var(--text-main);
+        }
+        
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .program-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary);
+        }
+        
+        .program-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .program-content {
+            padding: 25px;
+        }
+        
+        .program-title {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+        
+        .program-description {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+        
+        .program-time {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--secondary);
+            font-size: 14px;
+        }
+        
+        /* Canlı Yayım Bölməsi */
+        .live-section {
+            padding: 100px 0;
+        }
+        
+        .live-player {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .player-placeholder {
+            background: rgba(255, 255,255, 0.05);
+            border-radius: 10px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .player-placeholder i {
+            font-size: 80px;
+            color: var(--primary);
+        }
+        
+        .live-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .stat-box {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            min-width: 150px;
+        }
+        
+        .stat-number {
+            font-size: 36px;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--bg-surface);
+            padding: 60px 0 30px;
+            margin-top: 100px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+        
+        .footer-section p {
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 48px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .hero {
+                height: 70vh;
+                margin-top: 140px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- BÜTÜN HTML KODUNU BURDA SAXLA (eyni qalır) -->
-    
-    <script>
-        // JavaScript kodunu yenilə:
-        
-        // 1. Səhifə yükləndikdə
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log("VIP TV Qəbələ səhifəsi yükləndi - GitHub Pages");
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-tv"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1>VIP TV</h1>
+                        <p>QƏBƏLƏ</p>
+                    </div>
+                </div>
+                
+                <nav>
+                    <a href="#" class="btn-secondary" style="margin-right: 10px;">
+                        <i class="fas fa-home"></i> Ana Səhifə
+                    </a>
+                    <a href="#" class="btn-secondary">
+                        <i class="fas fa-user"></i> Admin
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="live-badge">
+                    <i class="fas fa-circle"></i> CANLI YAYIM
+                </div>
+                
+                <h2>VIP TV QƏBƏLƏ</h2>
+                <p>Qəbələnin peşəkar televiziya kanalı. Yerli xəbərlər, maraqlı proqramlar və canlı yayımlar.</p>
+                
+                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                    <!-- YENİ LINKLƏR -->
+                    <a href="https://www.youtube.com/@VIPTVAZERBAIJAN/live" 
+                       target="_blank" 
+                       class="btn btn-primary">
+                        <i class="fas fa-play"></i> Canlı Yayıma Bax
+                    </a>
+                    <a href="https://www.youtube.com/@VIPTVAZERBAIJAN/videos" 
+                       target="_blank" 
+                       class="btn btn-secondary">
+                        <i class="fas fa-film"></i> Video Arxiv
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proqramlar Bölməsi -->
+    <section id="proqramlar" class="programs-section">
+        <div class="container">
+            <h2 class="section-title">Bu Günün Proqramları</h2>
             
-            // 2. Live badge animation
-            const liveBadge = document.querySelector('.live-badge');
-            if(liveBadge) {
-                setInterval(() => {
-                    liveBadge.style.opacity = liveBadge.style.opacity === '0.6' ? '1' : '0.6';
-                }, 1000);
-            }
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-image" style="background-image: url('https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400');"></div>
+                    <div class="program-content">
+                        <h3 class="program-title">Səhər Xəbərləri</h3>
+                        <p class="program-description">Qəbələnin gündəlik xəbərləri, hadisələr və maraqlı reportajlar.</p>
+                        <div class="program-time">
+                            <i class="far fa-clock"></i> 08:00 - 09:00
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="program-card">
+                    <div class="program-image" style="background-image: url('https://images.unsplash.com/photo-1554188248-986adbb73be4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400');"></div>
+                    <div class="program-content">
+                        <h3 class="program-title">Turizm Dünyası</h3>
+                        <p class="program-description">Qəbələnin turizm imkanları, məşhur yerləri və səyahət məsləhətləri.</p>
+                        <div class="program-time">
+                            <i class="far fa-clock"></i> 14:00 - 15:00
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="program-card">
+                    <div class="program-image" style="background-image: url('https://images.unsplash.com/photo-1518609878373-06d740f60d8b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400');"></div>
+                    <div class="program-content">
+                        <h3 class="program-title">İdman Xəbərləri</h3>
+                        <p class="program-description">Yerli və ümummilli idman hadisələri, turnirlər və intervyular.</p>
+                        <div class="program-time">
+                            <i class="far fa-clock"></i> 19:00 - 20:00
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Canlı Yayım Bölməsi -->
+    <section id="canli-yayim" class="live-section">
+        <div class="container">
+            <h2 class="section-title">Canlı Yayım</h2>
             
-            // 3. İzləyici sayını simulyasiya et
-            const viewerCountElement = document.getElementById('viewerCount');
-            if(viewerCountElement) {
-                let viewerCount = 1247;
-                setInterval(() => {
-                    viewerCount += Math.floor(Math.random() * 10);
-                    viewerCountElement.textContent = viewerCount.toLocaleString();
-                }, 5000);
-            }
-            
-            // 4. Smooth scrolling
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    if(targetId === '#') return;
+            <div class="live-player">
+                <div class="player-placeholder">
+                    <i class="fas fa-satellite-dish"></i>
+                    <h3>YouTube Canlı Yayım</h3>
+                    <p>Canlı yayım üçün "Canlı Yayıma Bax" düyməsinə basın</p>
+                    <a href="https://www.youtube.com/@VIPTVAZERBAIJAN/live" 
+                       target="_blank" 
+                       class="btn btn-primary">
+                        <i class="fas fa-play"></i> YouTube-a Keç
+                    </a>
+                </div>
+                
+                <div class="live-stats">
+                    <div class="stat-box">
+                        <div class="stat-number" id="viewerCount">1,247</div>
+                        <p>Canlı İzləyici</p>
+                    </div>
                     
-                    const targetElement = document.querySelector(targetId);
-                    if(targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 100,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
+                    <div class="stat-box">
+                        <div class="stat-number" id="programDuration">2:45:12</div>
+                        <p>Yayım Müddəti</p>
+                    </div>
+                    
+                    <div class="stat-box">
+                        <div class="stat-number" id="todayViewers">8,954</div>
+                        <p>Bugünkü Baxış</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>VIP TV Qəbələ</h3>
+                    <p>Qəbələnin peşəkar televiziya kanalı. Yerli xəbərlər, maraqlı proqramlar və canlı yayımlar.</p>
+                    
+                    <div class="social-links">
+                        <a href="https://youtube.com/@VIPTVAZERBAIJAN" class="social-link" target="_blank">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://instagram.com/viptvpremium" class="social-link" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://tiktok.com/@viptvoffical" class="social-link" target="_blank">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Əlaqə</h3>
+                    <p><i class="fas fa-phone" style="margin-right: 10px;"></i> +994504545153</p>
+                    <p><i class="fas fa-envelope" style="margin-right: 10px;"></i> vippremiumoffical@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> Qəbələ, Azərbaycan</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Sürətli Keçidlər</h3>
+                    <p><a href="#proqramlar" style="color: var(--text-muted); text-decoration: none;">Proqramlar</a></p>
+                    <p><a href="#canli-yayim" style="color: var(--text-muted); text-decoration: none;">Canlı Yayım</a></p>
+                    <p><a href="https://www.youtube.com/@VIPTVAZERBAIJAN/videos" 
+                          target="_blank"
+                          style="color: var(--text-muted); text-decoration: none;">Video Arxiv</a></p>
+                    <p><a href="#" style="color: var(--text-muted); text-decoration: none;">Admin Panel</a></p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                © 2024 VIP TV Qəbələ. Bütün hüquqlar qorunur.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple JavaScript for testing
+        console.log("VIP TV Qəbələ test səhifəsi yükləndi");
+        
+        // Live badge animation
+        const liveBadge = document.querySelector('.live-badge');
+        setInterval(() => {
+            liveBadge.style.opacity = liveBadge.style.opacity === '0.6' ? '1' : '0.6';
+        }, 1000);
+        
+        // Simulate live viewer count
+        let viewerCount = 1247;
+        setInterval(() => {
+            viewerCount += Math.floor(Math.random() * 10);
+            document.getElementById('viewerCount').textContent = viewerCount.toLocaleString();
+        }, 5000);
+        
+        // Simulate program duration
+        let duration = 2 * 60 * 60 + 45 * 60 + 12; // 2:45:12 in seconds
+        setInterval(() => {
+            duration += 1;
+            const hours = Math.floor(duration / 3600);
+            const minutes = Math.floor((duration % 3600) / 60);
+            const seconds = duration % 60;
+            document.getElementById('programDuration').textContent = 
+                `${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }, 1000);
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
     </script>
