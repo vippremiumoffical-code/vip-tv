@@ -26,6 +26,7 @@
             color: var(--text-main);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
         .container {
@@ -36,7 +37,7 @@
         
         /* Header */
         .header {
-            background: rgba(2, 6, 23, 0.9);
+            background: rgba(2, 6, 23, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             position: fixed;
@@ -49,49 +50,126 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
+            padding: 15px 0;
         }
         
         .logo {
             display: flex;
             align-items: center;
             gap: 15px;
+            cursor: pointer;
         }
         
         .logo-icon {
             background: var(--primary);
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            font-size: 20px;
         }
         
         .logo-text h1 {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 900;
             letter-spacing: -0.5px;
         }
         
         .logo-text p {
             color: var(--secondary);
-            font-size: 14px;
+            font-size: 12px;
+        }
+        
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 280px;
+            height: 100vh;
+            background: var(--bg-surface);
+            padding: 80px 30px 30px;
+            transition: right 0.3s ease;
+            z-index: 999;
+            overflow-y: auto;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.3);
+        }
+        
+        .mobile-menu.active {
+            right: 0;
+        }
+        
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 998;
+            display: none;
+        }
+        
+        .mobile-menu-overlay.active {
+            display: block;
+        }
+        
+        .mobile-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .mobile-nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            padding: 12px 15px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.05);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .mobile-nav a:hover {
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--primary);
+        }
+        
+        .mobile-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
         }
         
         /* Hero Section */
         .hero {
-            height: 80vh;
-            background: linear-gradient(rgba(2, 6, 23, 0.8), rgba(2, 6, 23, 0.9)), 
+            height: 85vh;
+            background: linear-gradient(rgba(2, 6, 23, 0.9), rgba(2, 6, 23, 0.95)), 
                         url('https://images.unsplash.com/photo-1621856291403-44d6647bf12c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920');
             background-size: cover;
             background-position: center;
             display: flex;
             align-items: center;
-            margin-top: 90px;
+            margin-top: 75px;
             border-radius: 0 0 30px 30px;
             overflow: hidden;
+            position: relative;
         }
         
         .hero-content {
@@ -99,17 +177,23 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 40px;
+            position: relative;
+            z-index: 2;
         }
         
         .hero h2 {
-            font-size: 64px;
+            font-size: 3.5rem;
             font-weight: 900;
             margin-bottom: 20px;
             line-height: 1.1;
+            background: linear-gradient(90deg, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .hero p {
-            font-size: 20px;
+            font-size: 1.2rem;
             color: var(--text-muted);
             margin-bottom: 40px;
             max-width: 600px;
@@ -143,7 +227,7 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 16px 32px;
+            padding: 15px 30px;
             border-radius: 50px;
             font-weight: bold;
             text-decoration: none;
@@ -173,26 +257,40 @@
         
         .btn-secondary:hover {
             background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
         }
         
         /* Proqramlar Bölməsi */
         .programs-section {
-            padding: 100px 0;
+            padding: 80px 0;
             background: var(--bg-surface);
             border-radius: 30px;
-            margin: 50px 0;
+            margin: 40px 0;
         }
         
         .section-title {
             text-align: center;
-            font-size: 42px;
-            margin-bottom: 60px;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
             color: var(--text-main);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
         }
         
         .programs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
             margin-top: 40px;
         }
@@ -212,29 +310,54 @@
             border-color: var(--primary);
         }
         
-        .program-card:hover .play-overlay {
-            opacity: 1;
-        }
-        
         .program-image {
             height: 200px;
             background-size: cover;
             background-position: center;
             position: relative;
+            cursor: pointer;
         }
         
-        .play-overlay {
+        .program-image::after {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .program-card:hover .program-image::after {
+            opacity: 1;
+        }
+        
+        .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: var(--primary);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: white;
+            font-size: 24px;
             opacity: 0;
-            transition: opacity 0.3s;
+            transition: all 0.3s;
+            z-index: 2;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .program-card:hover .play-btn {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.1);
         }
         
         .program-content {
@@ -242,7 +365,7 @@
         }
         
         .program-title {
-            font-size: 22px;
+            font-size: 1.4rem;
             margin-bottom: 10px;
             color: var(--text-main);
         }
@@ -250,7 +373,8 @@
         .program-description {
             color: var(--text-muted);
             margin-bottom: 20px;
-            font-size: 15px;
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
         
         .program-time {
@@ -258,13 +382,13 @@
             align-items: center;
             gap: 8px;
             color: var(--secondary);
-            font-size: 14px;
+            font-size: 0.9rem;
             margin-bottom: 15px;
         }
         
         /* Canlı Yayım Bölməsi */
         .live-section {
-            padding: 100px 0;
+            padding: 80px 0;
         }
         
         .live-player {
@@ -284,11 +408,34 @@
             justify-content: center;
             flex-direction: column;
             gap: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .player-placeholder::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(239,68,68,0.1) 50%, transparent 70%);
+            animation: shine 3s infinite linear;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
         }
         
         .player-placeholder i {
             font-size: 80px;
             color: var(--primary);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .player-placeholder h3 {
+            position: relative;
+            z-index: 1;
         }
         
         .live-stats {
@@ -305,38 +452,52 @@
             background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
             min-width: 150px;
+            transition: transform 0.3s;
+        }
+        
+        .stat-box:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
         }
         
         .stat-number {
-            font-size: 36px;
+            font-size: 2.5rem;
             font-weight: bold;
             color: var(--primary);
             margin-bottom: 10px;
+            font-family: 'Arial Black', sans-serif;
         }
         
         /* YouTube Stats */
         .youtube-stats-section {
             padding: 80px 0;
             background: var(--bg-surface);
-            margin: 50px 0;
+            margin: 40px 0;
             border-radius: 30px;
         }
         
         .live-counter {
             display: inline-block;
             background: rgba(239, 68, 68, 0.1);
-            padding: 20px 40px;
+            padding: 25px 45px;
             border-radius: 20px;
             border: 2px solid var(--primary);
             margin: 40px auto;
+            transition: all 0.3s;
+        }
+        
+        .live-counter:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(239, 68, 68, 0.2);
         }
         
         .api-status {
             display: inline-block;
-            padding: 5px 15px;
+            padding: 8px 20px;
             border-radius: 20px;
-            font-size: 14px;
-            margin-left: 10px;
+            font-size: 0.9rem;
+            margin-left: 15px;
+            font-weight: bold;
         }
         
         .api-status.live {
@@ -351,99 +512,89 @@
             border: 1px solid #eab308;
         }
         
-        /* Admin Panel - GİZLİ */
-        .admin-section {
+        /* Haqqımızda Bölməsi */
+        .about-section {
             padding: 80px 0;
-            background: var(--bg-surface);
-            margin: 50px 0;
-            border-radius: 30px;
-            display: none; /* GİZLİ */
+            position: relative;
         }
         
-        .admin-visible {
-            display: block; /* Görünən edir */
-        }
-        
-        .login-box {
-            max-width: 400px;
-            margin: 0 auto;
-            background: rgba(255,255,255,0.05);
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .input-group {
-            margin-bottom: 20px;
-        }
-        
-        .input-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--text-muted);
-        }
-        
-        .input-group input {
-            width: 100%;
-            padding: 12px;
-            border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.1);
-            background: rgba(255,255,255,0.05);
-            color: white;
-            font-size: 16px;
-        }
-        
-        .login-btn {
-            width: 100%;
-            padding: 15px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 16px;
-            transition: all 0.3s;
-        }
-        
-        .login-btn:hover {
-            background: #dc2626;
-        }
-        
-        /* Real Admin Dashboard */
-        .admin-dashboard {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: rgba(255,255,255,0.05);
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.1);
-            display: none;
-        }
-        
-        .admin-dashboard.visible {
-            display: block;
-        }
-        
-        .dashboard-grid {
+        .about-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            color: var(--text-main);
+        }
+        
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: 20px;
             margin-top: 30px;
         }
         
-        .dashboard-card {
+        .feature {
             background: rgba(255,255,255,0.05);
-            padding: 25px;
+            padding: 20px;
             border-radius: 15px;
-            border: 1px solid rgba(255,255,255,0.1);
+            border-left: 4px solid var(--primary);
+        }
+        
+        .feature i {
+            color: var(--primary);
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        /* Admin Panel - TAM GİZLİ */
+        .admin-section {
+            display: none;
+        }
+        
+        /* Secret Admin Access */
+        .secret-admin-btn {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background: rgba(239, 68, 68, 0.2);
+            color: rgba(255,255,255,0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 997;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            transition: all 0.3s;
+            font-size: 20px;
+        }
+        
+        .secret-admin-btn:hover {
+            background: rgba(239, 68, 68, 0.4);
+            color: white;
+            transform: scale(1.1);
+            box-shadow: 0 5px 20px rgba(239, 68, 68, 0.3);
         }
         
         /* Footer */
         .footer {
             background: var(--bg-surface);
             padding: 60px 0 30px;
-            margin-top: 100px;
+            margin-top: 80px;
         }
         
         .footer-content {
@@ -454,14 +605,47 @@
         }
         
         .footer-section h3 {
-            font-size: 20px;
-            margin-bottom: 20px;
+            font-size: 1.5rem;
+            margin-bottom: 25px;
             color: var(--text-main);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
         }
         
         .footer-section p {
             color: var(--text-muted);
             line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .quick-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .quick-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .quick-links a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
         }
         
         .social-links {
@@ -485,7 +669,8 @@
         
         .social-link:hover {
             background: var(--primary);
-            transform: translateY(-3px);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(239, 68, 68, 0.3);
         }
         
         .copyright {
@@ -497,27 +682,85 @@
         }
         
         /* Responsive */
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
             .hero h2 {
-                font-size: 48px;
+                font-size: 2.8rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                height: 70vh;
+                margin-top: 70px;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
             }
             
             .hero p {
-                font-size: 18px;
+                font-size: 1rem;
             }
             
-            .header-content {
-                flex-direction: column;
-                gap: 20px;
+            .header-nav {
+                display: none;
             }
             
-            .hero {
-                height: 70vh;
-                margin-top: 140px;
+            .mobile-menu-btn {
+                display: block;
             }
             
             .section-title {
-                font-size: 32px;
+                font-size: 2rem;
+            }
+            
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .live-stats {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .stat-box {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .secret-admin-btn {
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 14px;
+            }
+            
+            .live-badge {
+                font-size: 12px;
+                padding: 6px 15px;
             }
         }
         
@@ -534,6 +777,7 @@
             animation: slideIn 0.3s ease;
             display: none;
             max-width: 400px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
         
         @keyframes slideIn {
@@ -556,30 +800,6 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        
-        /* Secret Admin Button */
-        .secret-admin-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(239, 68, 68, 0.2);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 999;
-            border: 1px solid rgba(239, 68, 68, 0.5);
-            transition: all 0.3s;
-        }
-        
-        .secret-admin-btn:hover {
-            background: rgba(239, 68, 68, 0.4);
-            transform: scale(1.1);
-        }
     </style>
 </head>
 <body>
@@ -587,7 +807,7 @@
     <header class="header">
         <div class="container">
             <div class="header-content">
-                <div class="logo">
+                <div class="logo" onclick="scrollToTop()">
                     <div class="logo-icon">
                         <i class="fas fa-tv"></i>
                     </div>
@@ -597,22 +817,79 @@
                     </div>
                 </div>
                 
-                <nav>
-                    <!-- YENİ: Ana Səhifə scroll edir -->
-                    <a href="#top" class="btn-secondary" style="margin-right: 10px;">
-                        <i class="fas fa-home"></i> Ana Səhifə
-                    </a>
-                    <!-- Admin düyməsi gizli paneli açır -->
-                    <a href="javascript:void(0)" onclick="toggleAdminPanel()" class="btn-secondary" id="adminBtn">
-                        <i class="fas fa-user"></i> Admin
-                    </a>
+                <!-- Desktop Navigation -->
+                <nav class="header-nav">
+                    <div style="display: flex; gap: 10px;">
+                        <a href="#proqramlar" class="btn-secondary">
+                            <i class="fas fa-tv"></i> Proqramlar
+                        </a>
+                        <a href="#canli-yayim" class="btn-secondary">
+                            <i class="fas fa-satellite-dish"></i> Canlı Yayım
+                        </a>
+                        <a href="#youtube-stats" class="btn-secondary">
+                            <i class="fab fa-youtube"></i> YouTube Stats
+                        </a>
+                        <a href="#haqqimizda" class="btn-secondary">
+                            <i class="fas fa-info-circle"></i> Haqqımızda
+                        </a>
+                    </div>
                 </nav>
+                
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
         </div>
     </header>
 
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay" onclick="toggleMobileMenu()"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" style="position: absolute; top: 20px; right: 20px;">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <div class="mobile-nav">
+            <a href="#proqramlar" onclick="toggleMobileMenu()">
+                <i class="fas fa-tv"></i> Proqramlar
+            </a>
+            <a href="#canli-yayim" onclick="toggleMobileMenu()">
+                <i class="fas fa-satellite-dish"></i> Canlı Yayım
+            </a>
+            <a href="#youtube-stats" onclick="toggleMobileMenu()">
+                <i class="fab fa-youtube"></i> YouTube Stats
+            </a>
+            <a href="#haqqimizda" onclick="toggleMobileMenu()">
+                <i class="fas fa-info-circle"></i> Haqqımızda
+            </a>
+            <a href="#elaqe" onclick="toggleMobileMenu()">
+                <i class="fas fa-phone"></i> Əlaqə
+            </a>
+        </div>
+        
+        <div class="mobile-social">
+            <a href="https://youtube.com/@VIPTVAZERBAIJAN" class="social-link" target="_blank">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://instagram.com/viptvpremium" class="social-link" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://tiktok.com/@viptvoffical" class="social-link" target="_blank">
+                <i class="fab fa-tiktok"></i>
+            </a>
+        </div>
+        
+        <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+            <p style="color: var(--text-muted); font-size: 14px; text-align: center;">
+                <i class="fas fa-phone"></i> +994 50 454 5153<br>
+                <i class="fas fa-envelope"></i> vippremiumoffical@gmail.com
+            </p>
+        </div>
+    </div>
+
     <!-- Hero Section -->
-    <section id="top" class="hero">
+    <section class="hero" id="top">
         <div class="container">
             <div class="hero-content">
                 <div class="live-badge">
@@ -638,17 +915,73 @@
         </div>
     </section>
 
+    <!-- Haqqımızda Bölməsi -->
+    <section id="haqqimizda" class="about-section">
+        <div class="container">
+            <h2 class="section-title">Haqqımızda</h2>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>VIP TV Qəbələ</h2>
+                    <p>2010-cu ildən etibarən Qəbələ regionunda fəaliyyət göstərən peşəkar televiziya kanalıyız. Yerli icma üçün yüksək keyfiyyətli məzmun yaradırıq.</p>
+                    <p>Missiyamız Qəbələnin mədəni irsini, turizm potensialını və sosial həyatını geniş auditoriyaya çatdırmaqdır.</p>
+                    
+                    <div class="about-features">
+                        <div class="feature">
+                            <i class="fas fa-broadcast-tower"></i>
+                            <h4>Canlı Yayım</h4>
+                            <p>Yüksək keyfiyyətli canlı yayımlar</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-video"></i>
+                            <h4>Video Arxiv</h4>
+                            <p>1000-dən çox video məzmun</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-users"></i>
+                            <h4>Komanda</h4>
+                            <p>Peşəkar jurnalistlər və operatorlar</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-trophy"></i>
+                            <h4>Mükafatlar</h4>
+                            <p>Regional mükafatlar qazanmışıq</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="position: relative;">
+                    <div style="background: rgba(239,68,68,0.1); padding: 40px; border-radius: 20px; border: 2px solid rgba(239,68,68,0.3);">
+                        <h3 style="color: var(--primary); margin-bottom: 20px;">
+                            <i class="fas fa-bullseye"></i> Missiyamız
+                        </h3>
+                        <p style="color: var(--text-muted); margin-bottom: 20px;">
+                            Qəbələni dünyaya, dünyanı Qəbələyə çatdırmaq. Yerli talantları kəşf etmək və inkişaf etdirmək.
+                        </p>
+                        
+                        <h3 style="color: var(--primary); margin: 30px 0 20px;">
+                            <i class="fas fa-eye"></i> Görməmiz
+                        </h3>
+                        <p style="color: var(--text-muted);">
+                            Azərbaycanın ən yaxşı regional televiziya kanalı olmaq və beynəlxalq səviyyədə tanınmaq.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Proqramlar Bölməsi -->
     <section id="proqramlar" class="programs-section">
         <div class="container">
             <h2 class="section-title">Bu Günün Proqramları</h2>
             
-            <div class="programs-grid">
-                <!-- Proqram 1 -->
+            <div class="programs-grid" id="programsGrid">
+                <!-- Proqramlar dinamik yüklənəcək -->
                 <div class="program-card">
                     <div class="program-image" style="background-image: url('https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg');">
-                        <div class="play-overlay">
-                            <i class="fas fa-play" style="font-size: 50px; color: white;"></i>
+                        <div class="play-btn" onclick="playVideo('dQw4w9WgXcQ')">
+                            <i class="fas fa-play"></i>
                         </div>
                     </div>
                     <div class="program-content">
@@ -658,50 +991,6 @@
                             <i class="far fa-clock"></i> 08:00 - 09:00
                         </div>
                         <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" 
-                           target="_blank" 
-                           class="btn-secondary" 
-                           style="margin-top: 15px; display: inline-block; padding: 10px 20px;">
-                            <i class="fas fa-play"></i> İzlə
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Proqram 2 -->
-                <div class="program-card">
-                    <div class="program-image" style="background-image: url('https://img.youtube.com/vi/9bZkp7q19f0/maxresdefault.jpg');">
-                        <div class="play-overlay">
-                            <i class="fas fa-play" style="font-size: 50px; color: white;"></i>
-                        </div>
-                    </div>
-                    <div class="program-content">
-                        <h3 class="program-title">Turizm Dünyası</h3>
-                        <p class="program-description">Qəbələnin turizm imkanları, məşhur yerləri və səyahət məsləhətləri.</p>
-                        <div class="program-time">
-                            <i class="far fa-clock"></i> 14:00 - 15:00
-                        </div>
-                        <a href="https://www.youtube.com/watch?v=9bZkp7q19f0" 
-                           target="_blank" 
-                           class="btn-secondary" 
-                           style="margin-top: 15px; display: inline-block; padding: 10px 20px;">
-                            <i class="fas fa-play"></i> İzlə
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Proqram 3 -->
-                <div class="program-card">
-                    <div class="program-image" style="background-image: url('https://img.youtube.com/vi/L_jWHffIx5E/maxresdefault.jpg');">
-                        <div class="play-overlay">
-                            <i class="fas fa-play" style="font-size: 50px; color: white;"></i>
-                        </div>
-                    </div>
-                    <div class="program-content">
-                        <h3 class="program-title">İdman Xəbərləri</h3>
-                        <p class="program-description">Yerli və ümummilli idman hadisələri, turnirlər və intervyular.</p>
-                        <div class="program-time">
-                            <i class="far fa-clock"></i> 19:00 - 20:00
-                        </div>
-                        <a href="https://www.youtube.com/watch?v=L_jWHffIx5E" 
                            target="_blank" 
                            class="btn-secondary" 
                            style="margin-top: 15px; display: inline-block; padding: 10px 20px;">
@@ -732,7 +1021,7 @@
                 
                 <div class="live-stats">
                     <div class="stat-box">
-                        <div class="stat-number" id="viewerCount">1,247</div>
+                        <div class="stat-number" id="viewerCount">1,425</div>
                         <p>Canlı İzləyici</p>
                     </div>
                     
@@ -750,7 +1039,7 @@
         </div>
     </section>
 
-    <!-- YouTube Statistikası (REAL API ilə) -->
+    <!-- YouTube Statistikası -->
     <section id="youtube-stats" class="youtube-stats-section">
         <div class="container">
             <h2 class="section-title">
@@ -784,13 +1073,12 @@
                 </div>
             </div>
             
-            <!-- Canlı izləyici sayını göstər -->
             <div style="text-align: center; margin-top: 40px;">
                 <div class="live-counter">
                     <h3 style="color: var(--primary); margin-bottom: 10px;">
                         <i class="fas fa-eye"></i> Hazırda Canlı İzləyənlər
                     </h3>
-                    <div style="font-size: 48px; font-weight: bold; color: white;" id="liveViewers">370</div>
+                    <div style="font-size: 3rem; font-weight: bold; color: white;" id="liveViewers">370</div>
                     <p style="color: var(--text-muted); margin-top: 10px;">Real-time izləyici sayı</p>
                 </div>
             </div>
@@ -803,96 +1091,18 @@
                 </a>
                 
                 <button onclick="fetchRealYouTubeStats()" class="btn btn-secondary" style="margin-left: 15px;" id="refreshStatsBtn">
-                    <i class="fas fa-sync-alt"></i> Real Statistikaları Yenilə
+                    <i class="fas fa-sync-alt"></i> Statistikaları Yenilə
                 </button>
             </div>
             
-            <div style="text-align: center; margin-top: 20px; color: var(--text-muted); font-size: 14px;">
+            <div style="text-align: center; margin-top: 20px; color: var(--text-muted); font-size: 0.9rem;">
                 <p><i class="fas fa-info-circle"></i> Real YouTube API ilə bağlı. Statistikalar hər dəqiqə yenilənir.</p>
             </div>
         </div>
     </section>
 
-    <!-- Admin Panel Bölməsi (GİZLİ) -->
-    <section id="admin-panel" class="admin-section">
-        <div class="container">
-            <h2 class="section-title">Admin Panel</h2>
-            
-            <div class="login-box" id="loginBox">
-                <h3 style="text-align: center; margin-bottom: 30px; color: var(--text-main);">Yönetici Girişi</h3>
-                
-                <div class="input-group">
-                    <label>İstifadəçi adı</label>
-                    <input type="text" id="username" placeholder="viptvadmin" value="viptvadmin">
-                </div>
-                
-                <div class="input-group">
-                    <label>Şifrə</label>
-                    <input type="password" id="password" placeholder="********">
-                </div>
-                
-                <button class="login-btn" onclick="adminLogin()">
-                    <i class="fas fa-sign-in-alt"></i> Daxil Ol
-                </button>
-                
-                <p id="login-message" style="text-align: center; margin-top: 20px; color: var(--secondary);"></p>
-                
-                <div style="text-align: center; margin-top: 30px; color: var(--text-muted); font-size: 14px;">
-                    <p><i class="fas fa-lock"></i> Təhlükəsiz admin paneli</p>
-                </div>
-            </div>
-            
-            <!-- Real Admin Dashboard (girişdən sonra) -->
-            <div class="admin-dashboard" id="adminDashboard">
-                <h3 style="text-align: center; margin-bottom: 30px; color: var(--primary);">
-                    <i class="fas fa-tachometer-alt"></i> Admin Dashboard
-                </h3>
-                
-                <div class="dashboard-grid">
-                    <div class="dashboard-card">
-                        <h4><i class="fas fa-cog"></i> Sayt Nəzarəti</h4>
-                        <p>Veb sayt parametrləri</p>
-                        <button class="btn-secondary" style="margin-top: 15px; width: 100%;">
-                            <i class="fas fa-edit"></i> Düzəliş Et
-                        </button>
-                    </div>
-                    
-                    <div class="dashboard-card">
-                        <h4><i class="fab fa-youtube"></i> YouTube İdarəetmə</h4>
-                        <p>Kanal statistikaları</p>
-                        <a href="https://www.youtube.com/studio" target="_blank" class="btn-secondary" style="margin-top: 15px; width: 100%; display: inline-block; text-align: center;">
-                            <i class="fas fa-external-link-alt"></i> YouTube Studio
-                        </a>
-                    </div>
-                    
-                    <div class="dashboard-card">
-                        <h4><i class="fas fa-users"></i> İstifadəçilər</h4>
-                        <p>Admin istifadəçiləri</p>
-                        <button class="btn-secondary" style="margin-top: 15px; width: 100%;">
-                            <i class="fas fa-user-plus"></i> Əlavə Et
-                        </button>
-                    </div>
-                    
-                    <div class="dashboard-card">
-                        <h4><i class="fas fa-chart-line"></i> Analitika</h4>
-                        <p>Sayt statistikaları</p>
-                        <button class="btn-secondary" style="margin-top: 15px; width: 100%;">
-                            <i class="fas fa-chart-bar"></i> Hesabatlar
-                        </button>
-                    </div>
-                </div>
-                
-                <div style="text-align: center; margin-top: 40px;">
-                    <button onclick="adminLogout()" class="btn-primary">
-                        <i class="fas fa-sign-out-alt"></i> Çıxış
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" id="elaqe">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
@@ -909,37 +1119,101 @@
                         <a href="https://tiktok.com/@viptvoffical" class="social-link" target="_blank">
                             <i class="fab fa-tiktok"></i>
                         </a>
+                        <a href="https://facebook.com" class="social-link" target="_blank">
+                            <i class="fab fa-facebook"></i>
+                        </a>
                     </div>
                 </div>
                 
                 <div class="footer-section">
                     <h3>Əlaqə</h3>
-                    <p><i class="fas fa-phone" style="margin-right: 10px;"></i> +994504545153</p>
+                    <p><i class="fas fa-phone" style="margin-right: 10px;"></i> +994 50 454 5153</p>
                     <p><i class="fas fa-envelope" style="margin-right: 10px;"></i> vippremiumoffical@gmail.com</p>
                     <p><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> Qəbələ, Azərbaycan</p>
+                    <p><i class="fas fa-clock" style="margin-right: 10px;"></i> Həftəiçi: 09:00 - 18:00</p>
                 </div>
                 
                 <div class="footer-section">
                     <h3>Sürətli Keçidlər</h3>
-                    <p><a href="#proqramlar" style="color: var(--text-muted); text-decoration: none;">Proqramlar</a></p>
-                    <p><a href="#canli-yayim" style="color: var(--text-muted); text-decoration: none;">Canlı Yayım</a></p>
-                    <p><a href="#youtube-stats" style="color: var(--text-muted); text-decoration: none;">YouTube Stats</a></p>
-                    <p><a href="javascript:void(0)" onclick="toggleAdminPanel()" style="color: var(--text-muted); text-decoration: none;">Admin Panel</a></p>
+                    <div class="quick-links">
+                        <a href="#proqramlar">
+                            <i class="fas fa-chevron-right"></i> Proqramlar
+                        </a>
+                        <a href="#canli-yayim">
+                            <i class="fas fa-chevron-right"></i> Canlı Yayım
+                        </a>
+                        <a href="#youtube-stats">
+                            <i class="fas fa-chevron-right"></i> YouTube Stats
+                        </a>
+                        <a href="#haqqimizda">
+                            <i class="fas fa-chevron-right"></i> Haqqımızda
+                        </a>
+                        <a href="https://www.youtube.com/@VIPTVAZERBAIJAN/videos" target="_blank">
+                            <i class="fas fa-chevron-right"></i> Video Arxiv
+                        </a>
+                    </div>
                 </div>
             </div>
             
             <div class="copyright">
-                © 2024 VIP TV Qəbələ. Bütün hüquqlar qorunur.
+                © 2024 VIP TV Qəbələ. Bütün hüquqlar qorunur. | <a href="#" style="color: var(--text-muted); text-decoration: none;">Məxfilik Siyasəti</a> | <a href="#" style="color: var(--text-muted); text-decoration: none;">İstifadə Şərtləri</a>
             </div>
         </div>
     </footer>
 
-    <!-- Secret Admin Button (Sağ alt küncdə) -->
-    <div class="secret-admin-btn" onclick="toggleAdminPanel()" title="Admin Panel">
+    <!-- Secret Admin Access Button -->
+    <div class="secret-admin-btn" onclick="showAdminAccess()" title="Admin Girişi">
         <i class="fas fa-user-shield"></i>
     </div>
 
-    <!-- Notification div -->
+    <!-- Admin Access Modal -->
+    <div id="adminModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; align-items: center; justify-content: center;">
+        <div style="background: var(--bg-surface); padding: 40px; border-radius: 20px; max-width: 400px; width: 90%; position: relative;">
+            <button onclick="hideAdminAccess()" style="position: absolute; top: 15px; right: 15px; background: none; border: none; color: var(--text-muted); font-size: 20px; cursor: pointer;">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <h3 style="text-align: center; margin-bottom: 30px; color: var(--primary);">
+                <i class="fas fa-user-shield"></i> Admin Girişi
+            </h3>
+            
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; margin-bottom: 8px; color: var(--text-muted);">İstifadəçi adı</label>
+                <input type="text" id="adminUsername" 
+                       style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); color: white; font-size: 16px;">
+            </div>
+            
+            <div style="margin-bottom: 30px;">
+                <label style="display: block; margin-bottom: 8px; color: var(--text-muted);">Şifrə</label>
+                <input type="password" id="adminPassword" 
+                       style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); color: white; font-size: 16px;">
+            </div>
+            
+            <button onclick="checkAdminAccess()" 
+                    style="width: 100%; padding: 15px; background: var(--primary); color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 16px;">
+                <i class="fas fa-sign-in-alt"></i> Giriş
+            </button>
+            
+            <p id="adminMessage" style="text-align: center; margin-top: 20px; color: var(--secondary);"></p>
+        </div>
+    </div>
+
+    <!-- Video Player Modal -->
+    <div id="videoModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; align-items: center; justify-content: center;">
+        <div style="position: relative; width: 90%; max-width: 800px;">
+            <button onclick="closeVideo()" style="position: absolute; top: -40px; right: 0; background: var(--primary); color: white; border: none; width: 40px; height: 40px; border-radius: 50%; font-size: 20px; cursor: pointer; z-index: 10001;">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="videoContainer" style="padding-top: 56.25%; position: relative;">
+                <iframe id="ytPlayer" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: 10px;" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
     <div id="notification" class="notification"></div>
 
     <script>
@@ -949,12 +1223,12 @@
         
         // Admin Configuration
         const ADMIN_USERNAME = 'viptvadmin';
-        const ADMIN_PASSWORD = 'Qebele2024!'; // Təhlükəsiz şifrə
+        const ADMIN_PASSWORD = 'Qebele2024!';
         
         // State tracking
         let apiMode = 'live';
         let isAdminLoggedIn = false;
-        let adminPanelVisible = false;
+        let mobileMenuOpen = false;
         
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
@@ -963,118 +1237,193 @@
             // Başlanğıc animasiyalar
             startAnimations();
             
-            // Real API cəhd et
+            // Real YouTube API cəhd et
             setTimeout(() => {
                 fetchRealYouTubeStats();
+                fetchLatestVideos();
             }, 2000);
             
             // Hər dəqiqə avtomatik yenilə
             setInterval(fetchRealYouTubeStats, 60000);
             
-            // Admin panel state yadda saxla
-            const savedState = localStorage.getItem('adminPanelState');
-            if(savedState === 'visible') {
-                showAdminPanel();
-            }
+            // Smooth scrolling aktiv et
+            initSmoothScrolling();
         });
         
-        // Admin Panel aç/bağla
-        function toggleAdminPanel() {
-            if(adminPanelVisible) {
-                hideAdminPanel();
+        // Mobile menu aç/bağla
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const overlay = document.querySelector('.mobile-menu-overlay');
+            
+            mobileMenuOpen = !mobileMenuOpen;
+            
+            if(mobileMenuOpen) {
+                mobileMenu.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
             } else {
-                showAdminPanel();
+                mobileMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
             }
         }
         
-        function showAdminPanel() {
-            const adminSection = document.getElementById('admin-panel');
-            const adminBtn = document.getElementById('adminBtn');
-            
-            adminSection.classList.add('admin-visible');
-            adminBtn.innerHTML = '<i class="fas fa-times"></i> Admin Bağla';
-            adminPanelVisible = true;
-            
-            // Scroll to admin panel
-            adminSection.scrollIntoView({ behavior: 'smooth' });
-            
-            // State yadda saxla
-            localStorage.setItem('adminPanelState', 'visible');
-            
-            showNotification('🔓 Admin paneli açıldı');
+        // Scroll to top
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         }
         
-        function hideAdminPanel() {
-            const adminSection = document.getElementById('admin-panel');
-            const adminBtn = document.getElementById('adminBtn');
-            
-            adminSection.classList.remove('admin-visible');
-            adminBtn.innerHTML = '<i class="fas fa-user"></i> Admin';
-            adminPanelVisible = false;
-            
-            // State yadda saxla
-            localStorage.setItem('adminPanelState', 'hidden');
-            
-            showNotification('🔒 Admin paneli bağlandı');
+        // Son YouTube videolarını yüklə
+        async function fetchLatestVideos() {
+            try {
+                const response = await fetch(
+                    `https://www.googleapis.com/youtube/v3/search?key=${YOUTUBE_API_KEY}&channelId=UCVIPTV&part=snippet&order=date&maxResults=3&type=video`
+                );
+                
+                if(response.ok) {
+                    const data = await response.json();
+                    if(data.items && data.items.length > 0) {
+                        updateProgramCards(data.items);
+                    }
+                }
+            } catch (error) {
+                console.log('YouTube videoları yüklənərkən xəta:', error);
+                // Demo videolar göstər
+                showDemoVideos();
+            }
         }
         
-        // Admin Login function
-        function adminLogin() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const message = document.getElementById('login-message');
-            const loginBox = document.getElementById('loginBox');
-            const adminDashboard = document.getElementById('adminDashboard');
+        // Proqram kartlarını yenilə
+        function updateProgramCards(videos) {
+            const programsGrid = document.getElementById('programsGrid');
+            if(!programsGrid) return;
+            
+            programsGrid.innerHTML = '';
+            
+            const programTitles = ['Səhər Xəbərləri', 'Turizm Dünyası', 'İdman Xəbərləri'];
+            const programTimes = ['08:00 - 09:00', '14:00 - 15:00', '19:00 - 20:00'];
+            const programDescriptions = [
+                'Qəbələnin gündəlik xəbərləri, hadisələr və maraqlı reportajlar.',
+                'Qəbələnin turizm imkanları, məşhur yerləri və səyahət məsləhətləri.',
+                'Yerli və ümummilli idman hadisələri, turnirlər və intervyular.'
+            ];
+            
+            videos.forEach((video, index) => {
+                if(index >= 3) return;
+                
+                const videoId = video.id.videoId;
+                const thumbnail = video.snippet.thumbnails.high?.url || `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+                const title = video.snippet.title;
+                
+                const card = document.createElement('div');
+                card.className = 'program-card';
+                card.innerHTML = `
+                    <div class="program-image" style="background-image: url('${thumbnail}');">
+                        <div class="play-btn" onclick="playVideo('${videoId}')">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="program-content">
+                        <h3 class="program-title">${programTitles[index] || title}</h3>
+                        <p class="program-description">${programDescriptions[index]}</p>
+                        <div class="program-time">
+                            <i class="far fa-clock"></i> ${programTimes[index]}
+                        </div>
+                        <a href="https://www.youtube.com/watch?v=${videoId}" 
+                           target="_blank" 
+                           class="btn-secondary" 
+                           style="margin-top: 15px; display: inline-block; padding: 10px 20px;">
+                            <i class="fas fa-play"></i> İzlə
+                        </a>
+                    </div>
+                `;
+                
+                programsGrid.appendChild(card);
+            });
+        }
+        
+        // Demo videolar göstər
+        function showDemoVideos() {
+            const demoVideos = [
+                { id: { videoId: 'dQw4w9WgXcQ' } },
+                { id: { videoId: '9bZkp7q19f0' } },
+                { id: { videoId: 'L_jWHffIx5E' } }
+            ];
+            
+            updateProgramCards(demoVideos);
+        }
+        
+        // Video oynat
+        function playVideo(videoId) {
+            const modal = document.getElementById('videoModal');
+            const player = document.getElementById('ytPlayer');
+            
+            player.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Video qapat
+        function closeVideo() {
+            const modal = document.getElementById('videoModal');
+            const player = document.getElementById('ytPlayer');
+            
+            player.src = '';
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+        
+        // Admin girişi göstər
+        function showAdminAccess() {
+            const modal = document.getElementById('adminModal');
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Admin girişi gizlət
+        function hideAdminAccess() {
+            const modal = document.getElementById('adminModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+            document.getElementById('adminMessage').textContent = '';
+        }
+        
+        // Admin girişi yoxla
+        function checkAdminAccess() {
+            const username = document.getElementById('adminUsername').value;
+            const password = document.getElementById('adminPassword').value;
+            const message = document.getElementById('adminMessage');
             
             if(username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
-                // Giriş uğurlu
-                isAdminLoggedIn = true;
-                message.innerHTML = '<span style="color: #10b981;">✅ Giriş uğurlu! Admin dashboard yüklənir...</span>';
+                message.innerHTML = '<span style="color: #10b981;">✅ Giriş uğurlu! YouTube Studio-ya yönləndirilir...</span>';
                 
-                // Giriş formasını gizlət, dashboard göstər
                 setTimeout(() => {
-                    loginBox.style.display = 'none';
-                    adminDashboard.classList.add('visible');
-                    message.innerHTML = '';
-                    
-                    showNotification('🎉 Admin dashboard-u aktivdir!');
+                    window.open('https://www.youtube.com/studio', '_blank');
+                    hideAdminAccess();
+                    document.getElementById('adminPassword').value = '';
+                    showNotification('🎉 Admin hesabına daxil olundu!');
                 }, 1500);
-                
             } else {
-                // Giriş uğursuz
                 message.innerHTML = '<span style="color: #ef4444;">❌ Yanlış istifadəçi adı və ya şifrə</span>';
-                showNotification('❌ Giriş uğursuz! Şifrəni yoxlayın.');
                 
-                // Vibrate effect
-                document.getElementById('password').style.animation = 'shake 0.5s';
+                // Shake effect
+                const passwordInput = document.getElementById('adminPassword');
+                passwordInput.style.animation = 'shake 0.5s';
                 setTimeout(() => {
-                    document.getElementById('password').style.animation = '';
+                    passwordInput.style.animation = '';
                 }, 500);
             }
-        }
-        
-        // Admin Logout
-        function adminLogout() {
-            isAdminLoggedIn = false;
-            const loginBox = document.getElementById('loginBox');
-            const adminDashboard = document.getElementById('adminDashboard');
-            
-            loginBox.style.display = 'block';
-            adminDashboard.classList.remove('visible');
-            
-            // Şifrəni təmizlə
-            document.getElementById('password').value = '';
-            
-            showNotification('👋 Admin hesabından çıxış edildi');
         }
         
         // Real YouTube API funksiyası
         async function fetchRealYouTubeStats() {
             try {
                 updateButtonState('loading');
-                updateApiStatus('connecting');
                 
-                // 1. Channel ID tap
+                // Channel ID tap
                 const searchUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${YOUTUBE_CHANNEL}&type=channel&key=${YOUTUBE_API_KEY}`;
                 const searchResponse = await fetch(searchUrl);
                 
@@ -1090,7 +1439,7 @@
                 
                 const channelId = searchData.items[0].id.channelId;
                 
-                // 2. Statistics al
+                // Statistics al
                 const statsUrl = `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=${YOUTUBE_API_KEY}`;
                 const statsResponse = await fetch(statsUrl);
                 
@@ -1108,7 +1457,6 @@
                     updateStatistic('views', stats.viewCount);
                     updateStatistic('videos', stats.videoCount);
                     
-                    // API mode LIVE et
                     apiMode = 'live';
                     updateApiStatus('live');
                     
@@ -1121,7 +1469,6 @@
             } catch (error) {
                 console.warn('Real API xətası:', error);
                 
-                // Demo mod
                 apiMode = 'demo';
                 updateApiStatus('demo');
                 updateDemoStats();
@@ -1147,7 +1494,6 @@
         
         // Demo statistikalar
         function updateDemoStats() {
-            // Təsadüfi artım
             const subs = document.getElementById('subsValue');
             const views = document.getElementById('viewsValue');
             const videos = document.getElementById('videosValue');
@@ -1164,7 +1510,6 @@
                 views.textContent = currentViews.toLocaleString();
                 videos.textContent = currentVideos;
                 
-                // Loading gizlət
                 ['subs', 'views', 'videos'].forEach(type => {
                     const loading = document.getElementById(`${type}Loading`);
                     if(loading) loading.style.display = 'none';
@@ -1192,7 +1537,7 @@
                     }, 2000);
                     break;
                 case 'demo':
-                    btn.innerHTML = '<i class="fas fa-sync-alt"></i> Demo Statistikalar';
+                    btn.innerHTML = '<i class="fas fa-sync-alt"></i> Demo Mod';
                     btn.disabled = false;
                     break;
                 default:
@@ -1212,9 +1557,6 @@
             } else if(status === 'demo') {
                 element.textContent = 'Demo Mod';
                 element.className = 'api-status demo';
-            } else if(status === 'connecting') {
-                element.textContent = 'Bağlanır...';
-                element.className = 'api-status demo';
             }
         }
         
@@ -1229,7 +1571,7 @@
             }
             
             // Simulate live viewer count
-            let viewerCount = 1247;
+            let viewerCount = 1425;
             setInterval(() => {
                 viewerCount += Math.floor(Math.random() * 10);
                 const viewerElement = document.getElementById('viewerCount');
@@ -1265,30 +1607,28 @@
         }
         
         // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                if(targetId === '#top') {
+        function initSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
                     e.preventDefault();
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                    return;
-                }
-                
-                e.preventDefault();
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
-                }
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Mobile menu bağla
+                        if(mobileMenuOpen) {
+                            toggleMobileMenu();
+                        }
+                    }
+                });
             });
-        });
+        }
         
         // Notification göstər
         function showNotification(message) {
@@ -1307,7 +1647,7 @@
             }, 3000);
         }
         
-        // Shake animation for wrong password
+        // Shake animation
         const style = document.createElement('style');
         style.textContent = `
             @keyframes shake {
@@ -1317,6 +1657,14 @@
             }
         `;
         document.head.appendChild(style);
+        
+        // Escape ilə modalları bağla
+        document.addEventListener('keydown', function(e) {
+            if(e.key === 'Escape') {
+                closeVideo();
+                hideAdminAccess();
+            }
+        });
     </script>
 </body>
 </html>
