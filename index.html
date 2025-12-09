@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VIP TV Qəbələ - Test 1</title>
+    <title>VIP TV Qəbələ - Rəsmi Sayt</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -175,7 +175,7 @@
             background: rgba(255, 255, 255, 0.2);
         }
         
-        /* Yeni Əlavələr - Proqramlar Bölməsi */
+        /* Proqramlar Bölməsi */
         .programs-section {
             padding: 100px 0;
             background: var(--bg-surface);
@@ -203,6 +203,7 @@
             overflow: hidden;
             transition: all 0.3s;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
         }
         
         .program-card:hover {
@@ -211,10 +212,29 @@
             border-color: var(--primary);
         }
         
+        .program-card:hover .play-overlay {
+            opacity: 1;
+        }
+        
         .program-image {
             height: 200px;
             background-size: cover;
             background-position: center;
+            position: relative;
+        }
+        
+        .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
         }
         
         .program-content {
@@ -239,6 +259,7 @@
             gap: 8px;
             color: var(--secondary);
             font-size: 14px;
+            margin-bottom: 15px;
         }
         
         /* Canlı Yayım Bölməsi */
@@ -291,6 +312,60 @@
             font-weight: bold;
             color: var(--primary);
             margin-bottom: 10px;
+        }
+        
+        /* Admin Panel */
+        .admin-section {
+            padding: 80px 0;
+            background: var(--bg-surface);
+            margin: 50px 0;
+            border-radius: 30px;
+        }
+        
+        .login-box {
+            max-width: 400px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.05);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-muted);
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.05);
+            color: white;
+            font-size: 16px;
+        }
+        
+        .login-btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .login-btn:hover {
+            background: #dc2626;
         }
         
         /* Footer */
@@ -395,7 +470,7 @@
                     <a href="#" class="btn-secondary" style="margin-right: 10px;">
                         <i class="fas fa-home"></i> Ana Səhifə
                     </a>
-                    <a href="#" class="btn-secondary">
+                    <a href="#admin-panel" class="btn-secondary">
                         <i class="fas fa-user"></i> Admin
                     </a>
                 </nav>
@@ -415,7 +490,6 @@
                 <p>Qəbələnin peşəkar televiziya kanalı. Yerli xəbərlər, maraqlı proqramlar və canlı yayımlar.</p>
                 
                 <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                    <!-- YENİ LINKLƏR -->
                     <a href="https://www.youtube.com/@VIPTVAZERBAIJAN/live" 
                        target="_blank" 
                        class="btn btn-primary">
@@ -437,36 +511,69 @@
             <h2 class="section-title">Bu Günün Proqramları</h2>
             
             <div class="programs-grid">
+                <!-- Proqram 1 -->
                 <div class="program-card">
-                    <div class="program-image" style="background-image: url('https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400');"></div>
+                    <div class="program-image" style="background-image: url('https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg');">
+                        <div class="play-overlay">
+                            <i class="fas fa-play" style="font-size: 50px; color: white;"></i>
+                        </div>
+                    </div>
                     <div class="program-content">
                         <h3 class="program-title">Səhər Xəbərləri</h3>
                         <p class="program-description">Qəbələnin gündəlik xəbərləri, hadisələr və maraqlı reportajlar.</p>
                         <div class="program-time">
                             <i class="far fa-clock"></i> 08:00 - 09:00
                         </div>
+                        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" 
+                           target="_blank" 
+                           class="btn-secondary" 
+                           style="margin-top: 15px; display: inline-block; padding: 10px 20px;">
+                            <i class="fas fa-play"></i> İzlə
+                        </a>
                     </div>
                 </div>
                 
+                <!-- Proqram 2 -->
                 <div class="program-card">
-                    <div class="program-image" style="background-image: url('https://images.unsplash.com/photo-1554188248-986adbb73be4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400');"></div>
+                    <div class="program-image" style="background-image: url('https://img.youtube.com/vi/9bZkp7q19f0/maxresdefault.jpg');">
+                        <div class="play-overlay">
+                            <i class="fas fa-play" style="font-size: 50px; color: white;"></i>
+                        </div>
+                    </div>
                     <div class="program-content">
                         <h3 class="program-title">Turizm Dünyası</h3>
                         <p class="program-description">Qəbələnin turizm imkanları, məşhur yerləri və səyahət məsləhətləri.</p>
                         <div class="program-time">
                             <i class="far fa-clock"></i> 14:00 - 15:00
                         </div>
+                        <a href="https://www.youtube.com/watch?v=9bZkp7q19f0" 
+                           target="_blank" 
+                           class="btn-secondary" 
+                           style="margin-top: 15px; display: inline-block; padding: 10px 20px;">
+                            <i class="fas fa-play"></i> İzlə
+                        </a>
                     </div>
                 </div>
                 
+                <!-- Proqram 3 -->
                 <div class="program-card">
-                    <div class="program-image" style="background-image: url('https://images.unsplash.com/photo-1518609878373-06d740f60d8b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400');"></div>
+                    <div class="program-image" style="background-image: url('https://img.youtube.com/vi/L_jWHffIx5E/maxresdefault.jpg');">
+                        <div class="play-overlay">
+                            <i class="fas fa-play" style="font-size: 50px; color: white;"></i>
+                        </div>
+                    </div>
                     <div class="program-content">
                         <h3 class="program-title">İdman Xəbərləri</h3>
                         <p class="program-description">Yerli və ümummilli idman hadisələri, turnirlər və intervyular.</p>
                         <div class="program-time">
                             <i class="far fa-clock"></i> 19:00 - 20:00
                         </div>
+                        <a href="https://www.youtube.com/watch?v=L_jWHffIx5E" 
+                           target="_blank" 
+                           class="btn-secondary" 
+                           style="margin-top: 15px; display: inline-block; padding: 10px 20px;">
+                            <i class="fas fa-play"></i> İzlə
+                        </a>
                     </div>
                 </div>
             </div>
@@ -510,6 +617,33 @@
         </div>
     </section>
 
+    <!-- Admin Panel Bölməsi -->
+    <section id="admin-panel" class="admin-section">
+        <div class="container">
+            <h2 class="section-title">Admin Panel</h2>
+            
+            <div class="login-box">
+                <h3 style="text-align: center; margin-bottom: 30px; color: var(--text-main);">Yönetici Girişi</h3>
+                
+                <div class="input-group">
+                    <label>İstifadəçi adı</label>
+                    <input type="text" id="username" placeholder="admin">
+                </div>
+                
+                <div class="input-group">
+                    <label>Şifrə</label>
+                    <input type="password" id="password" placeholder="1234">
+                </div>
+                
+                <button class="login-btn" onclick="adminLogin()">
+                    <i class="fas fa-sign-in-alt"></i> Daxil Ol
+                </button>
+                
+                <p id="login-message" style="text-align: center; margin-top: 20px; color: var(--secondary);"></p>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -545,7 +679,7 @@
                     <p><a href="https://www.youtube.com/@VIPTVAZERBAIJAN/videos" 
                           target="_blank"
                           style="color: var(--text-muted); text-decoration: none;">Video Arxiv</a></p>
-                    <p><a href="#" style="color: var(--text-muted); text-decoration: none;">Admin Panel</a></p>
+                    <p><a href="#admin-panel" style="color: var(--text-muted); text-decoration: none;">Admin Panel</a></p>
                 </div>
             </div>
             
@@ -557,19 +691,24 @@
 
     <script>
         // Simple JavaScript for testing
-        console.log("VIP TV Qəbələ test səhifəsi yükləndi");
+        console.log("VIP TV Qəbələ səhifəsi yükləndi");
         
         // Live badge animation
         const liveBadge = document.querySelector('.live-badge');
-        setInterval(() => {
-            liveBadge.style.opacity = liveBadge.style.opacity === '0.6' ? '1' : '0.6';
-        }, 1000);
+        if(liveBadge) {
+            setInterval(() => {
+                liveBadge.style.opacity = liveBadge.style.opacity === '0.6' ? '1' : '0.6';
+            }, 1000);
+        }
         
         // Simulate live viewer count
         let viewerCount = 1247;
         setInterval(() => {
             viewerCount += Math.floor(Math.random() * 10);
-            document.getElementById('viewerCount').textContent = viewerCount.toLocaleString();
+            const viewerElement = document.getElementById('viewerCount');
+            if(viewerElement) {
+                viewerElement.textContent = viewerCount.toLocaleString();
+            }
         }, 5000);
         
         // Simulate program duration
@@ -579,8 +718,11 @@
             const hours = Math.floor(duration / 3600);
             const minutes = Math.floor((duration % 3600) / 60);
             const seconds = duration % 60;
-            document.getElementById('programDuration').textContent = 
-                `${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            const durationElement = document.getElementById('programDuration');
+            if(durationElement) {
+                durationElement.textContent = 
+                    `${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }
         }, 1000);
         
         // Smooth scrolling for anchor links
@@ -599,6 +741,24 @@
                 }
             });
         });
+        
+        // Admin login function
+        function adminLogin() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const message = document.getElementById('login-message');
+            
+            // Test credentials (sonra dəyişəcəyik)
+            if(username === 'admin' && password === '1234') {
+                message.innerHTML = '<span style="color: #10b981;">✅ Giriş uğurlu! Admin panelinə yönləndirilir...</span>';
+                setTimeout(() => {
+                    // Burada real admin panel linki qoya bilərsən
+                    window.open('https://www.youtube.com/studio', '_blank');
+                }, 2000);
+            } else {
+                message.innerHTML = '<span style="color: #ef4444;">❌ Yanlış istifadəçi adı və ya şifrə</span>';
+            }
+        }
     </script>
 </body>
 </html>
