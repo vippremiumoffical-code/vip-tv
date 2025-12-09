@@ -5,15 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VIP TV Qəbələ - Rəsmi Sayt</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" href="https://img.icons8.com/color/96/000000/youtube-play.png" type="image/x-icon">
-    
-    <!-- Open Graph Tags -->
-    <meta property="og:title" content="VIP TV Qəbələ - Rəsmi Sayt">
-    <meta property="og:description" content="Pozitiv enerji, keyfiyyətli məzmun. Canlı YouTube statistikaları və video arxivi.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=1200&h=630&fit=crop">
-    <meta property="og:url" content="https://vip-tv-qebele.vercel.app/">
-    <meta property="og:type" content="website">
-    
     <style>
         :root {
             --bg-dark: #020617;
@@ -545,80 +536,11 @@
             font-family: 'Arial Black', sans-serif;
         }
         
-        /* Share Section */
-        .share-section {
-            padding: 60px 0;
-            text-align: center;
-            background: linear-gradient(135deg, rgba(239,68,68,0.1), rgba(15,23,42,0.9));
-        }
-        
-        .share-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 30px;
-        }
-        
-        .share-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-weight: bold;
-            text-decoration: none;
-            transition: all 0.3s;
-            font-size: 16px;
-            min-width: 180px;
-            justify-content: center;
-        }
-        
-        .whatsapp-btn {
-            background: #25D366;
-            color: white;
-        }
-        
-        .whatsapp-btn:hover {
-            background: #1da851;
-            transform: translateY(-3px);
-        }
-        
-        .telegram-btn {
-            background: #0088cc;
-            color: white;
-        }
-        
-        .telegram-btn:hover {
-            background: #0077b5;
-            transform: translateY(-3px);
-        }
-        
-        .copy-btn {
-            background: var(--primary);
-            color: white;
-        }
-        
-        .copy-btn:hover {
-            background: #dc2626;
-            transform: translateY(-3px);
-        }
-        
-        .site-url {
-            background: rgba(255,255,255,0.1);
-            padding: 15px 25px;
-            border-radius: 10px;
-            margin: 20px auto;
-            max-width: 600px;
-            word-break: break-all;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-        
         /* Footer */
         .footer {
             background: var(--bg-surface);
             padding: 60px 0 30px;
-            margin-top: 0;
+            margin-top: 80px;
         }
         
         .footer-content {
@@ -770,7 +692,7 @@
                 font-size: 2.8rem;
             }
             
-            .hero-btn, .share-btn {
+            .hero-btn {
                 min-width: 180px;
                 padding: 14px 28px;
             }
@@ -818,13 +740,13 @@
                 max-width: 300px;
             }
             
-            .hero-buttons, .share-buttons {
+            .hero-buttons {
                 flex-direction: column;
                 align-items: center;
                 gap: 15px;
             }
             
-            .hero-btn, .share-btn {
+            .hero-btn {
                 width: 100%;
                 max-width: 300px;
             }
@@ -860,16 +782,6 @@
                 width: 250px;
                 padding: 70px 20px 25px;
             }
-            
-            .share-btn {
-                padding: 12px 25px;
-                font-size: 14px;
-            }
-            
-            .site-url {
-                padding: 10px 15px;
-                font-size: 14px;
-            }
         }
     </style>
 </head>
@@ -901,9 +813,6 @@
                     </a>
                     <a href="#youtube-stats" class="btn-secondary">
                         <i class="fab fa-youtube"></i> Statistikalar
-                    </a>
-                    <a href="#share" class="btn-secondary">
-                        <i class="fas fa-share-alt"></i> Paylaş
                     </a>
                 </nav>
                 
@@ -944,9 +853,6 @@
             </a>
             <a href="#youtube-stats" onclick="toggleMobileMenu()">
                 <i class="fab fa-youtube"></i> Statistikalar
-            </a>
-            <a href="#share" onclick="toggleMobileMenu()">
-                <i class="fas fa-share-alt"></i> Paylaş
             </a>
             <a href="#elaqe" onclick="toggleMobileMenu()">
                 <i class="fas fa-phone"></i> Əlaqə
@@ -990,10 +896,10 @@
                        class="hero-btn live">
                         <i class="fas fa-play"></i> CANLI YAYIMA BAX
                     </a>
-                    <a href="https://vip-tv-qebele.vercel.app/" 
+                    <a href="https://www.youtube.com/@viptvazerbaijan" 
                        target="_blank" 
                        class="hero-btn youtube">
-                        <i class="fas fa-external-link-alt"></i> RƏSMİ SAYTIMIZ
+                        <i class="fab fa-youtube"></i> YOUTUBE KANALIMIZ
                     </a>
                 </div>
             </div>
@@ -1071,22 +977,22 @@
             
             <div class="live-stats">
                 <div class="stat-box">
-                    <div class="stat-number" id="subsCount">2.5K</div>
+                    <div class="stat-number" id="subsCount">0</div>
                     <p>Abunəçi</p>
                 </div>
                 
                 <div class="stat-box">
-                    <div class="stat-number" id="viewsCount">150K</div>
+                    <div class="stat-number" id="viewsCount">0</div>
                     <p>Ümumi Baxış</p>
                 </div>
                 
                 <div class="stat-box">
-                    <div class="stat-number" id="videosCount">85</div>
+                    <div class="stat-number" id="videosCount">0</div>
                     <p>Video Sayı</p>
                 </div>
                 
                 <div class="stat-box">
-                    <div class="stat-number" id="lastMonthViews">5K</div>
+                    <div class="stat-number" id="lastMonthViews">0</div>
                     <p>Son 30 gün</p>
                 </div>
             </div>
@@ -1099,44 +1005,6 @@
                     <i class="fab fa-youtube"></i> YouTube Kanalımıza Abunə Olun
                 </a>
             </div>
-        </div>
-    </section>
-
-    <!-- Share Section -->
-    <section id="share" class="share-section">
-        <div class="container">
-            <h2 style="color: white; margin-bottom: 10px; font-size: 2.5rem;">
-                📱 Saytımızı Paylaşın
-            </h2>
-            <p style="color: rgba(255,255,255,0.7); margin-bottom: 30px; font-size: 1.1rem;">
-                Aşağıdakı linkləri istifadə edərək saytımızı dostlarınızla paylaşın
-            </p>
-            
-            <div class="site-url" id="siteUrl">
-                https://vip-tv-qebele.vercel.app/
-            </div>
-            
-            <div class="share-buttons">
-                <a href="https://wa.me/?text=🎬%20VIP%20TV%20Q%C9%99b%C9%99l%C9%99%20-%20R%C9%99smi%20Sayt%0A%0A🌐%20https://vip-tv-qebele.vercel.app/%0A📺%20YouTube:%20@viptvazerbaijan%0A📞%20%C6%8Flaq%C9%99:%20+994%2050%20454%205153%0A%0A#VIPTV #Qəbələ" 
-                   target="_blank"
-                   class="share-btn whatsapp-btn">
-                   <i class="fab fa-whatsapp"></i> WhatsApp
-                </a>
-                
-                <a href="https://t.me/share/url?url=https://vip-tv-qebele.vercel.app/&text=🎬 VIP TV Qəbələ - Rəsmi Sayt"
-                   target="_blank"
-                   class="share-btn telegram-btn">
-                   <i class="fab fa-telegram"></i> Telegram
-                </a>
-                
-                <button class="share-btn copy-btn" onclick="copyUrl()">
-                    <i class="fas fa-copy"></i> Linki Kopyala
-                </button>
-            </div>
-            
-            <p style="margin-top: 30px; color: rgba(255,255,255,0.7); font-size: 0.9rem;">
-                Linki kopyalayıb istədiyiniz yerdə paylaşa bilərsiniz
-            </p>
         </div>
     </section>
 
@@ -1186,15 +1054,15 @@
                         <a href="#youtube-stats">
                             <i class="fas fa-chevron-right"></i> Statistikalar
                         </a>
-                        <a href="#share">
-                            <i class="fas fa-chevron-right"></i> Paylaş
+                        <a href="https://www.youtube.com/@viptvazerbaijan/videos" target="_blank">
+                            <i class="fas fa-chevron-right"></i> YouTube Videolar
                         </a>
                     </div>
                 </div>
             </div>
             
             <div class="copyright">
-                © <span id="currentYear">2025</span> VIP TV Qəbələ. Bütün hüquqlar qorunur. | Pozitiv enerji, keyfiyyətli məzmun
+                © 2025 VIP TV Qəbələ. Bütün hüquqlar qorunur. | Pozitiv enerji, keyfiyyətli məzmun
             </div>
         </div>
     </footer>
@@ -1215,10 +1083,10 @@
     </div>
 
     <script>
-        // YouTube API Configuration - SADƏCƏ SAMPLE DATA
+        // YouTube API Configuration - REAL KANAL
         const YOUTUBE_API_KEY = 'AIzaSyAvY243WVposrcAcAA6aK6BBQM99NjX_Rs';
-        const YOUTUBE_CHANNEL_ID = 'UCMZR20JUlZ3xnswBcw3oTFA';
-        const SITE_URL = 'https://vip-tv-qebele.vercel.app/';
+        const YOUTUBE_CHANNEL_ID = 'UCMZR20JUlZ3xnswBcw3oTFA'; // vip tv azerbaijan kanal ID
+        const YOUTUBE_CHANNEL_URL = 'https://www.youtube.com/@viptvazerbaijan';
         
         // State tracking
         let nextPageToken = '';
@@ -1229,16 +1097,13 @@
         
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('VIP TV Qəbələ - Sayt başladı');
+            console.log('VIP TV Qəbələ - Real kanal məlumatları ilə başladı');
             
-            // Set current year in footer
-            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            // YouTube statistikalarını yüklə
+            fetchYouTubeStats();
             
-            // YouTube statistikalarını yüklə (sample data)
-            showSampleStats();
-            
-            // Videoları yüklə (sample data)
-            showSampleVideos();
+            // Videoları yüklə
+            fetchVideos();
             
             // Smooth scrolling
             initSmoothScrolling();
@@ -1276,11 +1141,22 @@
         // Canlı yayım yoxla
         async function checkLiveStream() {
             try {
-                // Bu hissəni API olmadan sadəcə false qaytarırıq
-                updateLiveBadge(false);
+                const response = await fetch(
+                    `https://www.googleapis.com/youtube/v3/search?key=${YOUTUBE_API_KEY}&channelId=${YOUTUBE_CHANNEL_ID}&part=snippet&eventType=live&type=video`
+                );
+                
+                if(response.ok) {
+                    const data = await response.json();
+                    if(data.items && data.items.length > 0) {
+                        // Canlı yayım var
+                        updateLiveBadge(true);
+                    } else {
+                        // Canlı yayım yoxdur
+                        updateLiveBadge(false);
+                    }
+                }
             } catch (error) {
                 console.log('Canlı yayım yoxlanılarkən xəta:', error);
-                updateLiveBadge(false);
             }
         }
         
@@ -1302,72 +1178,116 @@
             }
         }
         
-        // Sample stats göstər
-        function showSampleStats() {
-            // Sample data - API işləmədiyi üçün
-            document.getElementById('subsCount').textContent = '2.5K';
-            document.getElementById('viewsCount').textContent = '150K';
-            document.getElementById('videosCount').textContent = '85';
-            document.getElementById('lastMonthViews').textContent = '5K';
-        }
-        
-        // Sample videos göstər
-        function showSampleVideos() {
-            const videosGrid = document.getElementById('videosGrid');
-            
-            const sampleVideos = [
-                {
-                    id: { videoId: 'dQw4w9WgXcQ' },
-                    snippet: {
-                        title: 'Pozitiv Enerji - Günə Yaxşı Başlayın',
-                        description: 'Hər günü pozitiv başlamaq üçün motivasiya',
-                        thumbnails: {
-                            medium: { url: 'https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg' }
-                        },
-                        publishedAt: new Date().toISOString()
-                    }
-                },
-                {
-                    id: { videoId: '9bZkp7q19f0' },
-                    snippet: {
-                        title: 'Qəbələ Gözəllikləri - Təbiət Səfəri',
-                        description: 'Qəbələnin təbiət gözəllikləri',
-                        thumbnails: {
-                            medium: { url: 'https://img.youtube.com/vi/9bZkp7q19f0/mqdefault.jpg' }
-                        },
-                        publishedAt: new Date(Date.now() - 86400000).toISOString()
-                    }
-                },
-                {
-                    id: { videoId: 'dQw4w9WgXcQ' },
-                    snippet: {
-                        title: 'Həyatda Müvəffəqiyyət Üçün 7 Qayda',
-                        description: 'Müvəffəqiyyətli olmaq üçün tövsiyələr',
-                        thumbnails: {
-                            medium: { url: 'https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg' }
-                        },
-                        publishedAt: new Date(Date.now() - 172800000).toISOString()
-                    }
-                },
-                {
-                    id: { videoId: '9bZkp7q19f0' },
-                    snippet: {
-                        title: 'Komanda İşi - Uğurun Açarı',
-                        description: 'Komanda ilə işləməyin faydaları',
-                        thumbnails: {
-                            medium: { url: 'https://img.youtube.com/vi/9bZkp7q19f0/mqdefault.jpg' }
-                        },
-                        publishedAt: new Date(Date.now() - 259200000).toISOString()
+        // YouTube statistikalarını yüklə
+        async function fetchYouTubeStats() {
+            try {
+                // Channel statistics
+                const statsUrl = `https://www.googleapis.com/youtube/v3/channels?part=statistics,snippet&id=${YOUTUBE_CHANNEL_ID}&key=${YOUTUBE_API_KEY}`;
+                const response = await fetch(statsUrl);
+                
+                if(response.ok) {
+                    const data = await response.json();
+                    
+                    if(data.items && data.items[0]) {
+                        const stats = data.items[0].statistics;
+                        
+                        // Update statistics
+                        document.getElementById('subsCount').textContent = 
+                            formatNumber(stats.subscriberCount);
+                        document.getElementById('viewsCount').textContent = 
+                            formatNumber(stats.viewCount);
+                        document.getElementById('videosCount').textContent = 
+                            formatNumber(stats.videoCount);
+                        
+                        // Estimate last month views (approximate)
+                        const lastMonthViews = Math.floor(parseInt(stats.viewCount) / 30);
+                        document.getElementById('lastMonthViews').textContent = 
+                            formatNumber(lastMonthViews);
+                        
+                        console.log('YouTube stats loaded:', stats);
                     }
                 }
-            ];
+            } catch (error) {
+                console.error('YouTube stats error:', error);
+                // Show sample data if API fails
+                showSampleStats();
+            }
+        }
+        
+        // Videoları yüklə
+        async function fetchVideos() {
+            if(isLoading) return;
             
-            videosGrid.innerHTML = '';
-            sampleVideos.forEach(video => {
-                addVideoToGrid(video);
-            });
+            isLoading = true;
+            const videosGrid = document.getElementById('videosGrid');
             
-            document.getElementById('loadMoreBtn').style.display = 'none';
+            try {
+                // Show loading
+                if(loadedVideos === 0) {
+                    videosGrid.innerHTML = `
+                        <div class="loading">
+                            <div class="loading-spinner"></div>
+                            <p>Videolar yüklənir...</p>
+                        </div>
+                    `;
+                }
+                
+                // Build API URL
+                let apiUrl = `https://www.googleapis.com/youtube/v3/search?key=${YOUTUBE_API_KEY}&channelId=${YOUTUBE_CHANNEL_ID}&part=snippet&type=video&order=date&maxResults=${VIDEOS_PER_PAGE}`;
+                
+                if(nextPageToken) {
+                    apiUrl += `&pageToken=${nextPageToken}`;
+                }
+                
+                const response = await fetch(apiUrl);
+                
+                if(response.ok) {
+                    const data = await response.json();
+                    
+                    // Update next page token
+                    nextPageToken = data.nextPageToken || '';
+                    
+                    // Clear loading
+                    if(loadedVideos === 0) {
+                        videosGrid.innerHTML = '';
+                    }
+                    
+                    // Add videos to grid
+                    if(data.items && data.items.length > 0) {
+                        data.items.forEach(video => {
+                            if(video.id.videoId) {
+                                addVideoToGrid(video);
+                                loadedVideos++;
+                            }
+                        });
+                        
+                        // Show/hide load more button
+                        const loadMoreBtn = document.getElementById('loadMoreBtn');
+                        if(nextPageToken && data.items.length === VIDEOS_PER_PAGE) {
+                            loadMoreBtn.style.display = 'block';
+                        } else {
+                            loadMoreBtn.style.display = 'none';
+                        }
+                    } else {
+                        videosGrid.innerHTML = `
+                            <div style="text-align: center; grid-column: 1 / -1; padding: 40px; color: var(--text-muted);">
+                                <i class="fas fa-video-slash" style="font-size: 48px; margin-bottom: 20px;"></i>
+                                <h3>Video tapılmadı</h3>
+                                <p>YouTube kanalından videolar yüklənərkən xəta baş verdi.</p>
+                            </div>
+                        `;
+                    }
+                }
+            } catch (error) {
+                console.error('Videos fetch error:', error);
+                
+                // Show error or sample videos
+                if(loadedVideos === 0) {
+                    showSampleVideos();
+                }
+            } finally {
+                isLoading = false;
+            }
         }
         
         // Add video to grid
@@ -1410,23 +1330,13 @@
         
         // Daha çox video yüklə
         function loadMoreVideos() {
-            // API işləmədiyi üçün sadəcə daha çox sample video əlavə edək
-            showSampleVideos();
-        }
-        
-        // URL kopyala
-        function copyUrl() {
-            const url = SITE_URL;
-            navigator.clipboard.writeText(url).then(() => {
-                const btn = document.querySelector('.copy-btn');
-                const originalHtml = btn.innerHTML;
-                btn.innerHTML = '<i class="fas fa-check"></i> Kopyalandı!';
-                btn.style.background = '#10B981';
-                
-                setTimeout(() => {
-                    btn.innerHTML = originalHtml;
-                    btn.style.background = '';
-                }, 2000);
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            loadMoreBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Yüklənir...';
+            loadMoreBtn.disabled = true;
+            
+            fetchVideos().then(() => {
+                loadMoreBtn.innerHTML = '<i class="fas fa-plus"></i> Daha Çox Video Yüklə';
+                loadMoreBtn.disabled = false;
             });
         }
         
@@ -1439,6 +1349,7 @@
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
             
+            // Mobile menu bağla
             if(mobileMenuOpen) {
                 toggleMobileMenu();
             }
@@ -1452,6 +1363,62 @@
             player.src = '';
             modal.classList.remove('active');
             document.body.style.overflow = '';
+        }
+        
+        // Sample videos göstər (API xətası olarsa)
+        function showSampleVideos() {
+            const videosGrid = document.getElementById('videosGrid');
+            
+            const sampleVideos = [
+                {
+                    id: { videoId: 'dQw4w9WgXcQ' },
+                    snippet: {
+                        title: 'Pozitiv Enerji - Günə Yaxşı Başlayın',
+                        description: 'Hər günü pozitiv başlamaq üçün motivasiya',
+                        thumbnails: {
+                            medium: { url: 'https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg' }
+                        },
+                        publishedAt: '2024-01-15T10:30:00Z'
+                    }
+                },
+                {
+                    id: { videoId: '9bZkp7q19f0' },
+                    snippet: {
+                        title: 'Qəbələ Gözəllikləri - Təbiət Səfəri',
+                        description: 'Qəbələnin təbiət gözəllikləri',
+                        thumbnails: {
+                            medium: { url: 'https://img.youtube.com/vi/9bZkp7q19f0/mqdefault.jpg' }
+                        },
+                        publishedAt: '2024-01-14T14:20:00Z'
+                    }
+                }
+            ];
+            
+            videosGrid.innerHTML = '';
+            sampleVideos.forEach(video => {
+                addVideoToGrid(video);
+            });
+            
+            document.getElementById('loadMoreBtn').style.display = 'none';
+        }
+        
+        // Sample stats göstər
+        function showSampleStats() {
+            document.getElementById('subsCount').textContent = '2.5K';
+            document.getElementById('viewsCount').textContent = '150K';
+            document.getElementById('videosCount').textContent = '85';
+            document.getElementById('lastMonthViews').textContent = '5K';
+        }
+        
+        // Format number
+        function formatNumber(num) {
+            const number = parseInt(num);
+            if(number >= 1000000) {
+                return (number / 1000000).toFixed(1) + 'M';
+            } else if(number >= 1000) {
+                return (number / 1000).toFixed(1) + 'K';
+            }
+            return number.toLocaleString();
         }
         
         // Smooth scrolling
@@ -1469,6 +1436,7 @@
                             behavior: 'smooth'
                         });
                         
+                        // Mobile menu bağla
                         if(mobileMenuOpen) {
                             toggleMobileMenu();
                         }
