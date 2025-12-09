@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VIP TV Qəbələ - Rəsmi Sayt</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="https://img.icons8.com/color/96/000000/youtube-play.png" type="image/x-icon">
+    
+    <!-- Open Graph Tags - Social Media üçün -->
+    <meta property="og:title" content="VIP TV Qəbələ - Rəsmi Sayt">
+    <meta property="og:description" content="Pozitiv enerji, keyfiyyətli məzmun. Canlı YouTube statistikaları və video arxivi.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=1200&h=630&fit=crop">
+    <meta property="og:url" content="https://vip-tv-qebele.vercel.app/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    
     <style>
         :root {
             --bg-dark: #020617;
@@ -243,6 +253,20 @@
             50% { opacity: 0.6; }
         }
         
+        /* Visitor Counter */
+        .visitor-counter {
+            margin: 20px auto;
+            text-align: center;
+        }
+        
+        .visitor-badge {
+            display: inline-block;
+            background: rgba(239,68,68,0.2);
+            padding: 10px 25px;
+            border-radius: 50px;
+            border: 2px solid var(--primary);
+        }
+        
         /* Hero Buttons */
         .hero-buttons {
             display: flex;
@@ -367,6 +391,12 @@
             overflow: hidden;
             transition: all 0.3s;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeIn 0.5s ease forwards;
+            opacity: 0;
+        }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
         }
         
         .video-card:hover {
@@ -536,11 +566,55 @@
             font-family: 'Arial Black', sans-serif;
         }
         
+        /* Share Section */
+        .share-section {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(239,68,68,0.1), rgba(15,23,42,0.9));
+        }
+        
+        .qr-container {
+            background: white;
+            padding: 20px;
+            display: inline-block;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            margin: 30px 0;
+        }
+        
+        .qr-code {
+            border-radius: 15px;
+            display: block;
+        }
+        
+        .share-buttons {
+            margin-top: 30px;
+        }
+        
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            margin: 10px;
+            transition: transform 0.3s;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            background: #1da851;
+        }
+        
         /* Footer */
         .footer {
             background: var(--bg-surface);
             padding: 60px 0 30px;
-            margin-top: 80px;
+            margin-top: 0;
         }
         
         .footer-content {
@@ -782,6 +856,15 @@
                 width: 250px;
                 padding: 70px 20px 25px;
             }
+            
+            .qr-container {
+                padding: 15px;
+            }
+            
+            .hero-btn, .whatsapp-btn {
+                padding: 12px 25px;
+                font-size: 14px;
+            }
         }
     </style>
 </head>
@@ -813,6 +896,9 @@
                     </a>
                     <a href="#youtube-stats" class="btn-secondary">
                         <i class="fab fa-youtube"></i> Statistikalar
+                    </a>
+                    <a href="#share" class="btn-secondary">
+                        <i class="fas fa-share-alt"></i> Paylaş
                     </a>
                 </nav>
                 
@@ -854,6 +940,9 @@
             <a href="#youtube-stats" onclick="toggleMobileMenu()">
                 <i class="fab fa-youtube"></i> Statistikalar
             </a>
+            <a href="#share" onclick="toggleMobileMenu()">
+                <i class="fas fa-share-alt"></i> Paylaş
+            </a>
             <a href="#elaqe" onclick="toggleMobileMenu()">
                 <i class="fas fa-phone"></i> Əlaqə
             </a>
@@ -890,16 +979,25 @@
                 <h2>VIP TV QƏBƏLƏ</h2>
                 <p>Peşəkar komandamızla pozitiv enerjili paylaşımlar edirik. Keyfiyyətli məzmun, motivasiya və ilham.</p>
                 
+                <!-- Visitor Counter -->
+                <div class="visitor-counter">
+                    <div class="visitor-badge">
+                        <i class="fas fa-eye" style="color: var(--primary); margin-right: 10px;"></i>
+                        <span style="font-weight: bold; color: white;" id="visitorCount">1000+</span>
+                        <span style="color: var(--text-muted); margin-left: 5px;">Canlı İzləyici</span>
+                    </div>
+                </div>
+                
                 <div class="hero-buttons">
                     <a href="https://www.youtube.com/@viptvazerbaijan/live" 
                        target="_blank" 
                        class="hero-btn live">
                         <i class="fas fa-play"></i> CANLI YAYIMA BAX
                     </a>
-                    <a href="https://www.youtube.com/@viptvazerbaijan" 
+                    <a href="https://vip-tv-qebele.vercel.app/" 
                        target="_blank" 
                        class="hero-btn youtube">
-                        <i class="fab fa-youtube"></i> YOUTUBE KANALIMIZ
+                        <i class="fas fa-external-link-alt"></i> RƏSMİ SAYTIMIZ
                     </a>
                 </div>
             </div>
@@ -1008,6 +1106,42 @@
         </div>
     </section>
 
+    <!-- Share Section -->
+    <section id="share" class="share-section">
+        <div class="container">
+            <h2 style="color: white; margin-bottom: 10px; font-size: 2.5rem;">
+                📱 Mobil-dən Scan Edin
+            </h2>
+            <p style="color: rgba(255,255,255,0.7); margin-bottom: 40px; font-size: 1.1rem;">
+                QR kodu scan edib saytımızı mobil cihazınızda açın
+            </p>
+            
+            <div class="qr-container">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://vip-tv-qebele.vercel.app/&format=svg&bgcolor=0F172A&color=EF4444&qzone=2" 
+                     alt="VIP TV QR Code"
+                     class="qr-code">
+            </div>
+            
+            <div class="share-buttons">
+                <a href="https://vip-tv-qebele.vercel.app/" 
+                   class="btn btn-primary"
+                   style="padding: 15px 40px; font-size: 1.2rem; margin: 15px;">
+                   <i class="fas fa-external-link-alt"></i> Sayta Keçid
+                </a>
+                
+                <a href="https://wa.me/?text=🎬%20VIP%20TV%20Q%C9%99b%C9%99l%C9%99%20-%20R%C9%99smi%20Sayt%0A%0A🌐%20https://vip-tv-qebele.vercel.app/%0A📺%20YouTube:%20@viptvazerbaijan%0A📞%20%C6%8Flaq%C9%99:%20+994%2050%20454%205153%0A%0A#VIPTV #Qəbələ" 
+                   target="_blank"
+                   class="whatsapp-btn">
+                   <i class="fab fa-whatsapp"></i> WhatsApp-da Paylaş
+                </a>
+            </div>
+            
+            <p style="margin-top: 30px; color: rgba(255,255,255,0.7); font-size: 0.9rem;">
+                <i class="fas fa-link"></i> https://vip-tv-qebele.vercel.app/
+            </p>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer" id="elaqe">
         <div class="container">
@@ -1054,15 +1188,15 @@
                         <a href="#youtube-stats">
                             <i class="fas fa-chevron-right"></i> Statistikalar
                         </a>
-                        <a href="https://www.youtube.com/@viptvazerbaijan/videos" target="_blank">
-                            <i class="fas fa-chevron-right"></i> YouTube Videolar
+                        <a href="#share">
+                            <i class="fas fa-chevron-right"></i> QR Kod
                         </a>
                     </div>
                 </div>
             </div>
             
             <div class="copyright">
-                © 2025 VIP TV Qəbələ. Bütün hüquqlar qorunur. | Pozitiv enerji, keyfiyyətli məzmun
+                © <span id="currentYear">2025</span> VIP TV Qəbələ. Bütün hüquqlar qorunur. | Pozitiv enerji, keyfiyyətli məzmun
             </div>
         </div>
     </footer>
@@ -1083,10 +1217,11 @@
     </div>
 
     <script>
-        // YouTube API Configuration - REAL KANAL
+        // YouTube API Configuration
         const YOUTUBE_API_KEY = 'AIzaSyAvY243WVposrcAcAA6aK6BBQM99NjX_Rs';
-        const YOUTUBE_CHANNEL_ID = 'UCMZR20JUlZ3xnswBcw3oTFA'; // vip tv azerbaijan kanal ID
+        const YOUTUBE_CHANNEL_ID = 'UCMZR20JUlZ3xnswBcw3oTFA';
         const YOUTUBE_CHANNEL_URL = 'https://www.youtube.com/@viptvazerbaijan';
+        const SITE_URL = 'https://vip-tv-qebele.vercel.app/';
         
         // State tracking
         let nextPageToken = '';
@@ -1097,7 +1232,13 @@
         
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('VIP TV Qəbələ - Real kanal məlumatları ilə başladı');
+            console.log('VIP TV Qəbələ - Sayt başladı');
+            
+            // Set current year in footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            // Random visitor count
+            updateVisitorCount();
             
             // YouTube statistikalarını yüklə
             fetchYouTubeStats();
@@ -1110,7 +1251,18 @@
             
             // Check for live stream
             checkLiveStream();
+            
+            // Animate video cards
+            animateVideoCards();
         });
+        
+        // Update visitor count with random number
+        function updateVisitorCount() {
+            const baseCount = 1000;
+            const randomAddition = Math.floor(Math.random() * 500);
+            const total = baseCount + randomAddition;
+            document.getElementById('visitorCount').textContent = total.toLocaleString() + '+';
+        }
         
         // Mobile menu aç/bağla
         function toggleMobileMenu() {
@@ -1148,10 +1300,8 @@
                 if(response.ok) {
                     const data = await response.json();
                     if(data.items && data.items.length > 0) {
-                        // Canlı yayım var
                         updateLiveBadge(true);
                     } else {
-                        // Canlı yayım yoxdur
                         updateLiveBadge(false);
                     }
                 }
@@ -1181,7 +1331,6 @@
         // YouTube statistikalarını yüklə
         async function fetchYouTubeStats() {
             try {
-                // Channel statistics
                 const statsUrl = `https://www.googleapis.com/youtube/v3/channels?part=statistics,snippet&id=${YOUTUBE_CHANNEL_ID}&key=${YOUTUBE_API_KEY}`;
                 const response = await fetch(statsUrl);
                 
@@ -1191,7 +1340,6 @@
                     if(data.items && data.items[0]) {
                         const stats = data.items[0].statistics;
                         
-                        // Update statistics
                         document.getElementById('subsCount').textContent = 
                             formatNumber(stats.subscriberCount);
                         document.getElementById('viewsCount').textContent = 
@@ -1199,17 +1347,13 @@
                         document.getElementById('videosCount').textContent = 
                             formatNumber(stats.videoCount);
                         
-                        // Estimate last month views (approximate)
                         const lastMonthViews = Math.floor(parseInt(stats.viewCount) / 30);
                         document.getElementById('lastMonthViews').textContent = 
                             formatNumber(lastMonthViews);
-                        
-                        console.log('YouTube stats loaded:', stats);
                     }
                 }
             } catch (error) {
                 console.error('YouTube stats error:', error);
-                // Show sample data if API fails
                 showSampleStats();
             }
         }
@@ -1222,7 +1366,6 @@
             const videosGrid = document.getElementById('videosGrid');
             
             try {
-                // Show loading
                 if(loadedVideos === 0) {
                     videosGrid.innerHTML = `
                         <div class="loading">
@@ -1232,7 +1375,6 @@
                     `;
                 }
                 
-                // Build API URL
                 let apiUrl = `https://www.googleapis.com/youtube/v3/search?key=${YOUTUBE_API_KEY}&channelId=${YOUTUBE_CHANNEL_ID}&part=snippet&type=video&order=date&maxResults=${VIDEOS_PER_PAGE}`;
                 
                 if(nextPageToken) {
@@ -1244,15 +1386,12 @@
                 if(response.ok) {
                     const data = await response.json();
                     
-                    // Update next page token
                     nextPageToken = data.nextPageToken || '';
                     
-                    // Clear loading
                     if(loadedVideos === 0) {
                         videosGrid.innerHTML = '';
                     }
                     
-                    // Add videos to grid
                     if(data.items && data.items.length > 0) {
                         data.items.forEach(video => {
                             if(video.id.videoId) {
@@ -1261,7 +1400,6 @@
                             }
                         });
                         
-                        // Show/hide load more button
                         const loadMoreBtn = document.getElementById('loadMoreBtn');
                         if(nextPageToken && data.items.length === VIDEOS_PER_PAGE) {
                             loadMoreBtn.style.display = 'block';
@@ -1281,7 +1419,6 @@
             } catch (error) {
                 console.error('Videos fetch error:', error);
                 
-                // Show error or sample videos
                 if(loadedVideos === 0) {
                     showSampleVideos();
                 }
@@ -1328,6 +1465,14 @@
             videosGrid.appendChild(videoCard);
         }
         
+        // Animate video cards
+        function animateVideoCards() {
+            const videoCards = document.querySelectorAll('.video-card');
+            videoCards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+            });
+        }
+        
         // Daha çox video yüklə
         function loadMoreVideos() {
             const loadMoreBtn = document.getElementById('loadMoreBtn');
@@ -1337,6 +1482,7 @@
             fetchVideos().then(() => {
                 loadMoreBtn.innerHTML = '<i class="fas fa-plus"></i> Daha Çox Video Yüklə';
                 loadMoreBtn.disabled = false;
+                animateVideoCards();
             });
         }
         
@@ -1349,7 +1495,6 @@
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
             
-            // Mobile menu bağla
             if(mobileMenuOpen) {
                 toggleMobileMenu();
             }
@@ -1400,6 +1545,7 @@
             });
             
             document.getElementById('loadMoreBtn').style.display = 'none';
+            animateVideoCards();
         }
         
         // Sample stats göstər
@@ -1436,7 +1582,6 @@
                             behavior: 'smooth'
                         });
                         
-                        // Mobile menu bağla
                         if(mobileMenuOpen) {
                             toggleMobileMenu();
                         }
@@ -1458,6 +1603,9 @@
                 closeVideoModal();
             }
         });
+        
+        // Update visitor count every minute
+        setInterval(updateVisitorCount, 60000);
     </script>
 </body>
 </html>
